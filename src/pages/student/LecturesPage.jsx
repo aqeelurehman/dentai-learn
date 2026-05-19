@@ -21,18 +21,18 @@ const SUBJECT_COLORS = {
 };
 
 const FILE_ICONS = {
-  pdf: "\u{1F4D5}",
-  doc: "\u{1F4C4}", docx: "\u{1F4C4}",
-  ppt: "\u{1F4CA}", pptx: "\u{1F4CA}",
-  xls: "\u{1F4CA}", xlsx: "\u{1F4CA}",
-  jpg: "\u{1F5BC}", jpeg: "\u{1F5BC}", png: "\u{1F5BC}", gif: "\u{1F5BC}", webp: "\u{1F5BC}",
-  mp4: "\u{1F3AC}", mov: "\u{1F3AC}", avi: "\u{1F3AC}",
-  zip: "\u{1F4E6}", rar: "\u{1F4E6}",
+  pdf: "📕",
+  doc: "📄", docx: "📄",
+  ppt: "📊", pptx: "📊",
+  xls: "📊", xlsx: "📊",
+  jpg: "🖼️", jpeg: "🖼️", png: "🖼️", gif: "🖼️", webp: "🖼️",
+  mp4: "🎬", mov: "🎬", avi: "🎬",
+  zip: "📦", rar: "📦",
 };
 
 function getFileIcon(name) {
   const ext = name.split(".").pop().toLowerCase();
-  return FILE_ICONS[ext] || "\u{1F4CE}";
+  return FILE_ICONS[ext] || "📎";
 }
 
 function formatSize(bytes) {
@@ -81,7 +81,7 @@ function FilePreview({ file, onClose }) {
             <button onClick={() => downloadFile(file)}
               className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all hover:scale-105"
               style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', color: '#c9a84c' }}>
-              {"\u{2B07}"} Download
+              {"⬇️"} Download
             </button>
             <button onClick={onClose}
               className="px-2 py-1.5 rounded-lg text-xs font-bold transition-colors"
@@ -106,7 +106,7 @@ function FilePreview({ file, onClose }) {
               <button onClick={() => downloadFile(file)}
                 className="px-5 py-2 rounded-xl text-sm font-bold transition-all hover:scale-105"
                 style={{ background: 'linear-gradient(135deg, #a07820, #c9a84c)', color: '#fff' }}>
-                {"\u{2B07}"} Download File
+                {"⬇️"} Download File
               </button>
             </div>
           )}
@@ -168,7 +168,7 @@ function LectureDetail({ lecture, onBack }) {
         <div className="flex items-center gap-3 mb-3">
           <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl"
             style={{ background: `${color}18`, border: `1px solid ${color}44` }}>
-            {"\u{1F393}"}
+            {"🎓"}
           </div>
           <div>
             <h1 className="text-lg font-black uppercase tracking-widest" style={{ color }}>{lecture.title}</h1>
@@ -196,7 +196,7 @@ function LectureDetail({ lecture, onBack }) {
       {lecture.videoUrl && !embedUrl && (
         <div className="mb-5 p-4 rounded-2xl flex items-center gap-3"
           style={{ background: 'rgba(13,21,37,0.92)', border: '1px solid rgba(59,130,246,0.25)' }}>
-          <span className="text-xl">{"\u{1F3AC}"}</span>
+          <span className="text-xl">{"🎬"}</span>
           <div>
             <div className="text-xs font-bold mb-0.5" style={{ color: '#3B82F6' }}>Video Link</div>
             <a href={lecture.videoUrl} target="_blank" rel="noopener noreferrer"
@@ -211,7 +211,7 @@ function LectureDetail({ lecture, onBack }) {
       {files.length > 0 && (
         <div className="mb-5 p-5 rounded-2xl" style={{ background: 'rgba(13,21,37,0.92)', border: '1px solid rgba(59,130,246,0.18)' }}>
           <div className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{ color: '#3B82F6' }}>
-            {"\u{1F4CE}"} Attachments &middot; {files.length} file{files.length > 1 ? "s" : ""}
+            {"📎"} Attachments &middot; {files.length} file{files.length > 1 ? "s" : ""}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {files.map((f, idx) => (
@@ -236,7 +236,7 @@ function LectureDetail({ lecture, onBack }) {
                     onClick={(e) => { e.stopPropagation(); downloadFile(f); }}
                     className="text-[10px] font-bold px-2 py-1 rounded-lg transition-all hover:scale-105"
                     style={{ background: 'rgba(59,130,246,0.12)', color: '#3B82F6' }}>
-                    {"\u{2B07}"} Download
+                    {"⬇️"} Download
                   </button>
                 </div>
               </div>
@@ -327,7 +327,7 @@ export default function LecturesPage() {
       {/* Lectures grid */}
       {filtered.length === 0 ? (
         <EmptyState
-          icon={"\u{1F393}"}
+          icon={"🎓"}
           title="No Lectures Found"
           desc={search ? `No results for "${search}"` : "Your faculty hasn't uploaded any lectures yet"}
         />
@@ -346,19 +346,19 @@ export default function LecturesPage() {
                 <div className="flex items-start justify-between mb-3">
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center text-lg transition-transform group-hover:scale-110"
                     style={{ background: `${color}18`, border: `1px solid ${color}44` }}>
-                    {"\u{1F393}"}
+                    {"🎓"}
                   </div>
                   <div className="flex gap-1.5">
                     {fileCount > 0 && (
                       <span className="text-[10px] font-bold px-2 py-0.5 rounded-full"
                         style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)', color: '#3B82F6' }}>
-                        {"\u{1F4CE}"} {fileCount}
+                        {"📎"} {fileCount}
                       </span>
                     )}
                     {l.videoUrl && (
                       <span className="text-[10px] font-bold px-2 py-0.5 rounded-full"
                         style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)', color: '#8B5CF6' }}>
-                        {"\u{1F3AC}"} Video
+                        {"🎬"} Video
                       </span>
                     )}
                   </div>

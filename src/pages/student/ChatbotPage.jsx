@@ -44,7 +44,7 @@ function renderText(text) {
 
 export default function ChatbotPage() {
   const { user } = useApp();
-  const WELCOME = { role: "bot", text: `\u{1F44B} Hi ${user.name.split(" ")[0]}! I'm **DentAI** — your expert oral pathology assistant.\n\nI can help you with:\n• Odontogenic cysts, tumours & inflammatory lesions\n• Quiz preparation & mnemonics\n• Case-based differential diagnosis\n• Histology, radiology & treatment\n\nWhat would you like to explore today?` };
+  const WELCOME = { role: "bot", text: `👋 Hi ${user.name.split(" ")[0]}! I'm **DentAI** — your expert oral pathology assistant.\n\nI can help you with:\n• Odontogenic cysts, tumours & inflammatory lesions\n• Quiz preparation & mnemonics\n• Case-based differential diagnosis\n• Histology, radiology & treatment\n\nWhat would you like to explore today?` };
 
   const [msgs, setMsgs]     = useState([WELCOME]);
   const [input, setInput]   = useState("");
@@ -131,7 +131,7 @@ export default function ChatbotPage() {
               border: '2px solid #c9a84c',
             }}
           >
-            {'\u{1F9B7}'}
+            {'🦷'}
           </div>
           <div>
             <div className="font-black text-sm" style={{ color: '#e8edf5' }}>DentAI Assistant</div>

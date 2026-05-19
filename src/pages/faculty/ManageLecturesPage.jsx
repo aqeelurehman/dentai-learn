@@ -38,18 +38,18 @@ const SUBJECT_COLORS = {
 };
 
 const FILE_ICONS = {
-  pdf: "\u{1F4D5}",
-  doc: "\u{1F4C4}", docx: "\u{1F4C4}",
-  ppt: "\u{1F4CA}", pptx: "\u{1F4CA}",
-  xls: "\u{1F4CA}", xlsx: "\u{1F4CA}",
-  jpg: "\u{1F5BC}", jpeg: "\u{1F5BC}", png: "\u{1F5BC}", gif: "\u{1F5BC}", webp: "\u{1F5BC}",
-  mp4: "\u{1F3AC}", mov: "\u{1F3AC}", avi: "\u{1F3AC}",
-  zip: "\u{1F4E6}", rar: "\u{1F4E6}",
+  pdf: "📕",
+  doc: "📄", docx: "📄",
+  ppt: "📊", pptx: "📊",
+  xls: "📊", xlsx: "📊",
+  jpg: "🖼️", jpeg: "🖼️", png: "🖼️", gif: "🖼️", webp: "🖼️",
+  mp4: "🎬", mov: "🎬", avi: "🎬",
+  zip: "📦", rar: "📦",
 };
 
 function getFileIcon(name) {
   const ext = name.split(".").pop().toLowerCase();
-  return FILE_ICONS[ext] || "\u{1F4CE}";
+  return FILE_ICONS[ext] || "📎";
 }
 
 function formatSize(bytes) {
@@ -195,7 +195,7 @@ export default function ManageLecturesPage() {
 
       {filtered.length === 0 ? (
         <EmptyState
-          icon="\u{1F393}"
+          icon="🎓"
           title="No Lectures Yet"
           desc={filter !== "All" ? `No lectures found for "${filter}"` : "Add your first lecture for students to study"}
           action={<Button onClick={openAdd} style={{ background: 'linear-gradient(135deg, #a07820, #c9a84c)', border: 'none', color: '#fff' }}>+ Add Lecture</Button>}
@@ -216,7 +216,7 @@ export default function ManageLecturesPage() {
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0"
                         style={{ background: `${color}18`, border: `1px solid ${color}44` }}>
-                        {"\u{1F393}"}
+                        {"🎓"}
                       </div>
                       <div className="min-w-0">
                         <h3 className="font-black text-sm uppercase tracking-widest truncate" style={{ color }}>{l.title}</h3>
@@ -227,13 +227,13 @@ export default function ManageLecturesPage() {
                           {fileCount > 0 && (
                             <span className="text-[10px] font-bold px-1.5 py-0.5 rounded"
                               style={{ background: 'rgba(59,130,246,0.12)', color: '#3B82F6' }}>
-                              {"\u{1F4CE}"} {fileCount} file{fileCount > 1 ? "s" : ""}
+                              {"📎"} {fileCount} file{fileCount > 1 ? "s" : ""}
                             </span>
                           )}
                           {l.videoUrl && (
                             <span className="text-[10px] font-bold px-1.5 py-0.5 rounded"
                               style={{ background: 'rgba(139,92,246,0.12)', color: '#8B5CF6' }}>
-                              {"\u{1F3AC}"} Video
+                              {"🎬"} Video
                             </span>
                           )}
                         </div>
@@ -334,7 +334,7 @@ export default function ManageLecturesPage() {
                   </div>
                 ) : (
                   <>
-                    <div className="text-2xl mb-1">{"\u{1F4C1}"}</div>
+                    <div className="text-2xl mb-1">{"📁"}</div>
                     <div className="text-xs font-bold mb-0.5" style={{ color: '#c9a84c' }}>
                       Click to browse or drag &amp; drop files
                     </div>
