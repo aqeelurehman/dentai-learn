@@ -199,13 +199,6 @@ export default function LoginPage() {
                     Create an account
                   </button>
                 </p>
-
-                {/* Demo creds */}
-                <div className="p-3 rounded-xl text-xs space-y-1" style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.15)' }}>
-                  <div className="font-bold mb-1" style={{ color: '#5a4a30' }}>Demo Credentials</div>
-                  <div style={{ color: '#8a7860' }}>Student: <span className="font-mono" style={{ color: '#c9a84c' }}>student@bahria.edu.pk</span> / <span className="font-mono">student123</span></div>
-                  <div style={{ color: '#8a7860' }}>Faculty: <span className="font-mono" style={{ color: '#8B5CF6' }}>faculty@bahria.edu.pk</span> / <span className="font-mono">faculty123</span></div>
-                </div>
               </div>
             </div>
           </div>
