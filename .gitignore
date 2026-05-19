@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+
+# Build output (Render builds fresh from source)
+dist
+dist-ssr
+
+# Environment files (secrets)
+.env
+server/.env
+*.local
+
+# Database (regenerated from seed on deploy)
+server/dentpath.db
+server/dentpath.db-wal
+server/dentpath.db-shm
+
+# Uploaded files
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.sw?
+
+# Python
+__pycache__
+*.pyc
+
+# Temp
+server_log.txt
+server_err.txt
+server_stdout.txt
+server_stderr.txt
+pip_install.log
+create_pptx.py
+DentAI_Learn_Assignment_3_4.pptx

@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>DentAI Learn – Premium UI System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#080e1c;--navy2:#0d1628;--navy3:#111e38;--navy4:#162244;
+  --gold:#c9a84c;--gold2:#f0d080;--gold3:#b8932a;--gold-g:linear-gradient(135deg,#b8932a,#c9a84c 40%,#f0d080 70%,#c9a84c);
+  --pearl:linear-gradient(135deg,#e8ddd0 0%,#f5eee4 30%,#d4c8b8 60%,#c8b898 100%);
+  --iridescent:linear-gradient(135deg,#d4c5a9,#e8d5b7,#c5b89a,#b8a882,#d4c5a9);
+  --text:#e8edf5;--muted:#7a8faa;--card:rgba(16,26,46,.92);--border:rgba(201,168,76,.18);
+}
+body{background:#060b16;font-family:'DM Sans',sans-serif;color:#fff;padding:40px 20px}
+
+/* ─── PAGE HEADER ─── */
+.page-header{text-align:center;margin-bottom:56px}
+.ph-title{font-family:'Cinzel',serif;font-size:32px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.04em;margin-bottom:8px}
+.ph-sub{color:#4a6080;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+
+/* ─── SECTION HEADERS ─── */
+.section-label{font-family:'Cinzel',serif;font-size:11px;font-weight:700;color:#c9a84c;text-transform:uppercase;letter-spacing:.2em;text-align:center;margin:48px 0 24px;padding:8px 0;border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12)}
+
+/* ─── GRID ─── */
+.grid{display:flex;flex-wrap:wrap;gap:36px;justify-content:center;max-width:1600px;margin:0 auto}
+.grid-2{display:flex;flex-wrap:wrap;gap:36px;justify-content:center;max-width:900px;margin:0 auto}
+.screen-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+.screen-label{font-size:9px;font-weight:800;color:#c9a84c;text-transform:uppercase;letter-spacing:.18em;text-align:center;opacity:.8}
+
+/* ─── DEVICE SHELLS ─── */
+.phone{width:210px;height:420px;background:var(--navy2);border-radius:32px;border:2px solid rgba(201,168,76,.3);overflow:hidden;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 0 1px rgba(201,168,76,.08),inset 0 1px 0 rgba(255,255,255,.06),0 0 60px rgba(201,168,76,.06)}
+.tablet{width:360px;height:460px;background:var(--navy2);border-radius:24px;border:2px solid rgba(201,168,76,.3);overflow:hidden;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 0 1px rgba(201,168,76,.08),inset 0 1px 0 rgba(255,255,255,.06),0 0 60px rgba(201,168,76,.06)}
+.wide-tablet{width:520px;height:420px;background:var(--navy2);border-radius:24px;border:2px solid rgba(201,168,76,.3);overflow:hidden;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 0 1px rgba(201,168,76,.08),inset 0 1px 0 rgba(255,255,255,.06),0 0 60px rgba(201,168,76,.06)}
+.inner{width:100%;height:100%;overflow:hidden;position:relative}
+
+/* ═══════════════════════════════════════════════════════
+   1. SPLASH
+═══════════════════════════════════════════════════════ */
+.splash{background:linear-gradient(160deg,#060b16 0%,#0a1428 50%,#060b16 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:0;position:relative;overflow:hidden}
+.splash::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.1) 0%,transparent 70%)}
+.hex-bg{position:absolute;inset:0;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='46'%3E%3Cpath d='M20 2 L38 12 L38 34 L20 44 L2 34 L2 12 Z' fill='none' stroke='%23c9a84c' stroke-width='1'/%3E%3C/svg%3E");
+  background-size:40px 46px}
+.sp-logo{width:52px;height:52px;background:linear-gradient(135deg,#0d1a30,#1a2d50);border:1.5px solid rgba(201,168,76,.6);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  box-shadow:0 0 30px rgba(201,168,76,.3),0 8px 24px rgba(0,0,0,.5)}
+.sp-tooth-svg{width:90px;height:100px;margin:8px 0 12px}
+.sp-title{font-family:'Cinzel',serif;font-size:18px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.06em}
+.sp-sub{font-size:8.5px;color:#4a6080;letter-spacing:.2em;text-transform:uppercase;margin-top:3px;margin-bottom:14px}
+.sp-wave{display:flex;align-items:center;gap:5px;margin:10px 0}
+.sp-wline{width:28px;height:1px;background:linear-gradient(90deg,transparent,#c9a84c,transparent)}
+.sp-ai{font-size:8px;color:#c9a84c;font-weight:900;letter-spacing:.12em}
+.sp-badges{display:flex;gap:8px;margin-top:14px}
+.sp-badge{font-size:7px;color:#3a5070;letter-spacing:.08em;display:flex;align-items:center;gap:3px}
+.sp-badge span{color:#c9a84c;font-size:10px}
+
+/* ═══════════════════════════════════════════════════════
+   2. LOGIN
+═══════════════════════════════════════════════════════ */
+.login-wrap{display:grid;grid-template-columns:42% 58%;height:100%}
+.login-left{background:linear-gradient(160deg,#060b16,#0d1628);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;position:relative}
+.login-left::after{content:'';position:absolute;right:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,.3),transparent)}
+.login-right{background:#f5f2ee;display:flex;flex-direction:column;padding:18px 16px;gap:9px}
+.lr-brand{font-family:'Cinzel',serif;font-size:15px;font-weight:900;color:#1a1208;letter-spacing:.04em}
+.lr-brand em{color:#c9a84c;font-style:normal}
+.lr-pro{font-size:8px;color:#9a8870;margin-top:-3px;letter-spacing:.08em}
+.lr-h{font-size:12px;font-weight:900;color:#1a1208;margin-top:2px}
+.lr-lbl{font-size:7.5px;font-weight:700;color:#5a4a30;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
+.lr-input{width:100%;background:#fff;border:1.5px solid #e0d5c0;border-radius:10px;padding:7px 9px;font-size:8px;color:#5a4a30;display:flex;align-items:center;gap:5px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.lr-icon{font-size:10px;opacity:.35}
+.lr-btn{width:100%;padding:8px;border-radius:24px;font-size:9px;font-weight:900;text-align:center;
+  background:linear-gradient(135deg,#a07820,#c9a84c,#e8c66a);color:#fff;letter-spacing:.06em;
+  box-shadow:0 4px 16px rgba(201,168,76,.4);cursor:pointer;margin-top:2px}
+.lr-forgot{font-size:7.5px;color:#c9a84c;text-align:right;cursor:pointer;font-weight:600}
+.lr-divider{display:flex;align-items:center;gap:6px}
+.lr-dline{flex:1;height:1px;background:#e0d5c0}
+.lr-dtext{font-size:7px;color:#aaa}
+.lr-social{width:100%;padding:6px;border-radius:22px;font-size:8px;font-weight:700;text-align:center;display:flex;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.lr-google{background:#fff;border:1.5px solid #ddd;color:#333;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.lr-apple{background:linear-gradient(135deg,#a07820,#c9a84c);color:#fff;box-shadow:0 3px 10px rgba(201,168,76,.35)}
+.lr-new{font-size:7.5px;color:#888;text-align:center}
+.lr-new span{color:#c9a84c;font-weight:700}
+
+/* ═══════════════════════════════════════════════════════
+   3. REGISTER
+═══════════════════════════════════════════════════════ */
+.reg{background:linear-gradient(160deg,#060b16,#0a1428);height:100%;display:flex;flex-direction:column;align-items:center;padding:14px;overflow:hidden}
+.reg-glow{position:absolute;top:-30px;left:50%;transform:translateX(-50%);width:160px;height:160px;
+  background:radial-gradient(circle,rgba(201,168,76,.12),transparent 70%);pointer-events:none}
+.reg-logo{width:30px;height:30px;background:linear-gradient(135deg,#0d1a30,#1a2d50);border:1.5px solid rgba(201,168,76,.6);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 0 14px rgba(201,168,76,.25)}
+.reg-title{font-family:'Cinzel',serif;font-size:13px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:4px 0 1px}
+.reg-tooth{font-size:22px;margin:3px 0}
+.reg-card{width:100%;background:rgba(16,26,46,.95);border:1px solid var(--border);border-radius:18px;padding:12px;margin-top:8px;flex:1}
+.reg-tabs{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:rgba(0,0,0,.4);border-radius:12px;padding:3px;margin-bottom:10px}
+.rt{padding:5px;border-radius:9px;font-size:8px;font-weight:800;text-align:center;color:#3a5a7a;cursor:pointer}
+.rt.active{background:linear-gradient(135deg,#a07820,#c9a84c);color:#fff;box-shadow:0 3px 10px rgba(201,168,76,.3)}
+.reg-field{display:flex;flex-direction:column;gap:2px;margin-bottom:6px}
+.rf-lbl{font-size:7px;color:#4a6a8a;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.rf-inp{background:rgba(0,0,0,.35);border:1px solid rgba(201,168,76,.18);border-radius:9px;padding:6px 9px;font-size:8px;color:#c8d5e5;display:flex;align-items:center;gap:5px}
+.rf-ico{font-size:10px;opacity:.5}
+.reg-btn{background:linear-gradient(135deg,#a07820,#c9a84c);padding:8px;border-radius:22px;font-size:8.5px;font-weight:900;text-align:center;color:#fff;
+  box-shadow:0 4px 14px rgba(201,168,76,.35);margin-top:4px;cursor:pointer;letter-spacing:.04em}
+.reg-login{font-size:7px;color:#3a5a7a;text-align:center;margin-top:5px}
+.reg-login span{color:#c9a84c;font-weight:700}
+
+/* ═══════════════════════════════════════════════════════
+   SHARED NAV
+═══════════════════════════════════════════════════════ */
+.nav{display:flex;justify-content:space-around;padding:6px 4px 5px;background:rgba(8,14,28,.98);border-top:1px solid rgba(201,168,76,.12);flex-shrink:0}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:1px;cursor:pointer;min-width:28px}
+.ni-icon{font-size:12px}
+.ni-lbl{font-size:5px;color:#4a6080;letter-spacing:.06em;font-weight:600}
+.ni-lbl.act{color:#c9a84c}
+
+/* ═══════════════════════════════════════════════════════
+   4. STUDENT DASHBOARD
+═══════════════════════════════════════════════════════ */
+.dash{background:var(--navy);height:100%;display:flex;flex-direction:column;overflow:hidden}
+.dash-hdr{background:linear-gradient(135deg,#0a1428,#0d1a30);padding:10px 12px 8px;border-bottom:1px solid rgba(201,168,76,.1);flex-shrink:0}
+.dh-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.dh-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#1a2d50,#243d60);border:2px solid #c9a84c;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.dh-txt{display:flex;flex-direction:column;margin-left:7px}
+.dh-greet{font-size:7.5px;color:#4a6080}
+.dh-name{font-size:11px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.notif{width:26px;height:26px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;position:relative;cursor:pointer}
+.notif-dot{position:absolute;top:-3px;right:-3px;width:9px;height:9px;background:#ef4444;border-radius:50%;font-size:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
+.search-bar{background:rgba(0,0,0,.35);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:5px 8px;font-size:7.5px;color:#4a6080;display:flex;align-items:center;gap:5px}
+.dash-body{flex:1;padding:8px;overflow:hidden}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;height:100%}
+.d-card{background:rgba(13,21,37,.92);border:1px solid rgba(201,168,76,.14);border-radius:12px;padding:8px;overflow:hidden}
+.dc-ttl{font-size:7px;font-weight:800;color:#c9a84c;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.1);padding-bottom:4px}
+.cont-item{background:rgba(0,0,0,.3);border-radius:9px;padding:6px;display:flex;gap:5px;align-items:center}
+.ci-img{width:28px;height:28px;background:linear-gradient(135deg,#1a2d50,#243d60);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.ci-txt{font-size:6.5px;font-weight:700;color:#d8e5f5;line-height:1.3}
+.ci-prog{height:2.5px;background:#1a2840;border-radius:2px;margin-top:4px}
+.ci-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#c9a84c,#f0d080);width:65%}
+.ci-pct{font-size:5.5px;color:#c9a84c;margin-top:2px}
+.model-grid2{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:2px}
+.mi2{background:rgba(0,0,0,.3);border-radius:7px;padding:5px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;border:1px solid transparent;transition:border-color .2s}
+.mi2:hover{border-color:rgba(201,168,76,.2)}
+.mi2-icon{font-size:15px}
+.mi2-lbl{font-size:5.5px;color:#9aacbe;text-align:center;line-height:1.2}
+.qs-btn{background:linear-gradient(135deg,#a07820,#c9a84c);padding:5px 8px;border-radius:8px;font-size:7px;font-weight:900;color:#fff;text-align:center;cursor:pointer}
+.qs-prev{font-size:6.5px;color:#4a6080;margin-top:3px}
+.qs-prev span{color:#c9a84c;font-weight:700}
+.ar-card{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:8px;padding:6px;text-align:center;margin-top:4px;cursor:pointer}
+.ar-lbl{font-size:7px;font-weight:800;color:#c9a84c}
+
+/* ═══════════════════════════════════════════════════════
+   5. LEARNING MODULE
+═══════════════════════════════════════════════════════ */
+.mod-screen{background:var(--navy);height:100%;display:flex;overflow:hidden}
+.mod-sidebar{width:95px;background:#0a1220;border-right:1px solid rgba(201,168,76,.1);padding:8px 6px;display:flex;flex-direction:column;gap:5px;overflow:hidden;flex-shrink:0}
+.msb-brand{font-family:'Cinzel',serif;font-size:6.5px;font-weight:700;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.4;margin-bottom:3px}
+.msb-cat{background:rgba(13,21,37,.9);border:1px solid rgba(201,168,76,.12);border-radius:9px;padding:6px 5px;cursor:pointer;transition:all .2s}
+.msb-cat.act{border-color:#c9a84c;background:rgba(201,168,76,.08);box-shadow:0 0 12px rgba(201,168,76,.12)}
+.msc-ic{font-size:12px;margin-bottom:2px}
+.msc-nm{font-size:6px;font-weight:700;color:#c9a84c}
+.msc-d{font-size:5px;color:#4a6080;line-height:1.3}
+.mod-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.mod-tabs{display:flex;gap:1px;padding:6px 8px 0;background:#0a1220;border-bottom:1px solid rgba(201,168,76,.1)}
+.mtt{padding:4px 7px;font-size:6px;font-weight:700;color:#4a6080;border-radius:7px 7px 0 0;cursor:pointer}
+.mtt.act{background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.18);border-bottom:none}
+.mod-body{flex:1;padding:8px;display:flex;gap:8px;overflow:hidden}
+.mod-txt{flex:1;overflow:hidden}
+.mod-h{font-size:10px;font-weight:900;color:#e8edf5;margin-bottom:5px;font-family:'Cinzel',serif}
+.mod-p{font-size:6px;color:#8aa0b8;line-height:1.7;margin-bottom:5px}
+.mod-bullet{display:flex;gap:4px;margin-bottom:3px;align-items:flex-start}
+.mod-bullet::before{content:'•';color:#c9a84c;font-size:9px;flex-shrink:0;margin-top:-1px}
+.mod-btext{font-size:6px;color:#9aacbe;line-height:1.5}
+.def-box{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.18);border-radius:9px;padding:7px;margin-top:5px}
+.def-ttl{font-size:7px;font-weight:800;color:#c9a84c;margin-bottom:3px}
+.def-txt{font-size:5.5px;color:#8aa0b8;line-height:1.6}
+.exp-btn{width:100%;background:linear-gradient(135deg,#a07820,#c9a84c);padding:5px;border-radius:9px;font-size:6.5px;font-weight:900;color:#fff;text-align:center;margin-top:6px;cursor:pointer}
+.mod-diag{width:95px;flex-shrink:0}
+.diag-box{background:rgba(13,21,37,.9);border:1px solid rgba(201,168,76,.2);border-radius:10px;width:100%;height:90px;display:flex;align-items:center;justify-content:center;margin-bottom:5px;position:relative;overflow:hidden}
+
+/* ═══════════════════════════════════════════════════════
+   6 & 13. AR / 3D MODEL VIEWER
+═══════════════════════════════════════════════════════ */
+.ar-screen{background:var(--navy);height:100%;display:flex;flex-direction:column;overflow:hidden}
+.ar-header{background:#0a1220;padding:8px 12px;border-bottom:1px solid rgba(201,168,76,.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.ar-title-block{text-align:center;flex:1}
+.ar-logo{font-family:'Cinzel',serif;font-size:9px;font-weight:700;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.08em}
+.ar-sub{font-size:6px;color:#4a6080;margin-top:1px}
+.ar-body{flex:1;display:flex;gap:0;overflow:hidden}
+.ar-viewport{flex:1;position:relative;overflow:hidden}
+.ar-bg{position:absolute;inset:0;background:linear-gradient(135deg,#080e1c,#0a1428 50%,#080e1c)}
+
+/* ── STUNNING 3D SKULL/JAW ── */
+.skull-canvas{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.ar-label-tag{position:absolute;background:rgba(8,14,28,.85);border:1px solid rgba(201,168,76,.5);border-radius:7px;padding:3px 7px;font-size:6px;font-weight:700;color:#e8d5a0;white-space:nowrap;backdrop-filter:blur(6px)}
+.ar-label-tag::after{content:'';position:absolute;width:20px;height:1px;background:rgba(201,168,76,.5)}
+.alt-tooth{top:18%;left:16%;text-align:right}
+.alt-tooth::after{right:-20px;top:50%}
+.alt-bone{top:55%;left:10%}
+.alt-bone::after{right:-20px;top:50%}
+.alt-mandible{top:76%;left:14%}
+.alt-mandible::after{right:-20px;top:50%}
+.alt-lesion{top:50%;right:10%;color:#ffb0a0;border-color:rgba(255,100,80,.5)}
+.alt-lesion::after{left:-20px;top:50%;right:auto;background:rgba(255,100,80,.5)}
+.alt-cavity{top:72%;right:12%}
+.alt-cavity::after{left:-20px;top:50%;right:auto}
+.ar-progress{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:3px}
+.ar-pip{width:14px;height:4px;background:rgba(201,168,76,.2);border-radius:2px}
+.ar-pip.act{background:#c9a84c;width:20px}
+.ar-sidebar{width:108px;background:rgba(8,14,28,.95);border-left:1px solid rgba(201,168,76,.12);padding:8px;display:flex;flex-direction:column;gap:7px;overflow:hidden;flex-shrink:0}
+.as-section{font-size:6.5px;font-weight:900;color:#c9a84c;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;font-family:'Cinzel',serif}
+.as-med-vis{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);border-radius:9px;padding:6px;text-align:center}
+.mv-schematic{width:100%;height:46px;background:linear-gradient(135deg,#0a1428,#0d1e38);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:4px;position:relative;overflow:hidden}
+.mv-lbl{font-size:5px;color:#c9a84c;font-weight:700;letter-spacing:.06em}
+.ar-ctrl-box{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:6px}
+.arc-row{display:flex;gap:3px;margin-top:4px}
+.arc-btn{flex:1;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:4px;text-align:center;font-size:5px;font-weight:800;color:#c9a84c}
+.arc-toggle{background:linear-gradient(135deg,#a07820,#c9a84c);border-radius:6px;padding:4px 6px;font-size:5px;font-weight:900;color:#fff}
+.ai-diag-box{background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:6px}
+.ai-diag-item{font-size:5.5px;color:#8aa0b8;margin-bottom:2px;display:flex;gap:3px;align-items:flex-start}
+.ai-diag-item::before{content:'•';color:#c9a84c;flex-shrink:0}
+.overlay-box{background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:6px}
+.ov-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.ov-lbl{font-size:5.5px;color:#9aacbe}
+.ov-toggle{width:22px;height:12px;background:rgba(201,168,76,.15);border-radius:6px;position:relative;cursor:pointer}
+.ov-toggle.on{background:linear-gradient(90deg,#a07820,#c9a84c)}
+.ov-knob{width:9px;height:9px;background:#fff;border-radius:50%;position:absolute;top:1.5px;left:1.5px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.ov-toggle.on .ov-knob{left:11.5px}
+
+/* AR full wide view */
+.ar-wide-screen{background:var(--navy);height:100%;display:flex;flex-direction:column}
+.arw-header{background:#0a1220;border-bottom:1px solid rgba(201,168,76,.1);padding:8px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.arw-logo{font-size:10px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Cinzel',serif;display:flex;align-items:center;gap:5px}
+.arw-student{font-size:7px;color:#4a6080;display:flex;align-items:center;gap:5px}
+.arw-av{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#1a2d50,#243d60);border:1.5px solid #c9a84c;display:flex;align-items:center;justify-content:center;font-size:11px}
+.arw-body{flex:1;display:flex;overflow:hidden}
+.arw-main{flex:1;position:relative;overflow:hidden}
+.arw-controls{width:130px;background:rgba(8,14,28,.96);border-left:1px solid rgba(201,168,76,.1);padding:10px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.arw-ctrl-box{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.14);border-radius:10px;padding:8px}
+.arwc-title{font-size:7px;font-weight:900;color:#c9a84c;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.arwc-row{display:flex;gap:4px;margin-top:4px}
+.arwc-btn{flex:1;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:7px;padding:6px 4px;text-align:center}
+.arwc-icon{font-size:13px}
+.arwc-lbl{font-size:5px;color:#9aacbe;margin-top:2px;font-weight:700}
+.knob-wrap{display:flex;justify-content:center;margin:4px 0}
+.knob{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#b8932a,#c9a84c,#f0d080);box-shadow:0 4px 16px rgba(201,168,76,.4),inset 0 1px 0 rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center}
+.knob-inner{width:6px;height:16px;background:rgba(0,0,0,.4);border-radius:3px}
+.feat-legend{display:flex;flex-direction:column;gap:3px}
+.feat-item{display:flex;align-items:center;gap:5px;font-size:6px;color:#9aacbe}
+.feat-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.arw-mini{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.16);border-radius:9px;padding:7px}
+.arw-nav{display:flex;justify-content:space-around;padding:5px 4px;background:rgba(8,14,28,.98);border-top:1px solid rgba(201,168,76,.12);flex-shrink:0}
+.an-item{display:flex;flex-direction:column;align-items:center;gap:1px}
+.an-ic{font-size:11px}
+.an-lb{font-size:4.5px;color:#4a6080;font-weight:600}
+.an-lb.act{color:#c9a84c}
+.ann-label{position:absolute;background:rgba(8,14,28,.9);border:1px solid rgba(201,168,76,.5);border-radius:6px;padding:3px 7px;font-size:6px;font-weight:700;color:#e8d5a0;white-space:nowrap}
+
+/* ═══════════════════════════════════════════════════════
+   7. AI CHATBOT
+═══════════════════════════════════════════════════════ */
+.chat-screen{background:var(--navy);height:100%;display:flex;overflow:hidden}
+.chat-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.chat-hdr{background:#0a1220;padding:8px 10px;border-bottom:1px solid rgba(201,168,76,.1);display:flex;align-items:center;gap:7px;flex-shrink:0}
+.chat-av{width:26px;height:26px;background:linear-gradient(135deg,#0d1a30,#1a2d50);border:1.5px solid #c9a84c;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px}
+.chat-nm{font-size:8.5px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Cinzel',serif}
+.chat-st{font-size:6px;color:#22c55e;display:flex;align-items:center;gap:3px}
+.chat-st::before{content:'';width:5px;height:5px;background:#22c55e;border-radius:50%;display:inline-block}
+.chat-msgs{flex:1;padding:8px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.msg{display:flex;gap:5px;align-items:flex-start}
+.msg.usr{flex-direction:row-reverse}
+.msg-av{width:20px;height:20px;border-radius:7px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.bubble{max-width:78%;padding:6px 8px;border-radius:11px;font-size:6.5px;line-height:1.7;color:#e8edf5}
+.bubble.bot{background:rgba(13,21,37,.98);border:1px solid rgba(201,168,76,.14)}
+.bubble.usr{background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.12));border:1px solid rgba(201,168,76,.28)}
+.bubble-ttl{font-size:7.5px;font-weight:900;color:#c9a84c;margin-bottom:3px;font-family:'Cinzel',serif}
+.bubble-sub{font-size:6px;font-weight:700;color:#9aacbe;margin-top:4px;margin-bottom:2px}
+.bubble-li{font-size:6px;color:#c8d5e5;display:flex;gap:3px;margin-bottom:1.5px}
+.bubble-li::before{content:'•';color:#c9a84c}
+.msg-imgs{display:flex;gap:3px;margin-top:5px}
+.msg-img{width:32px;height:24px;background:linear-gradient(135deg,#1a2d50,#243d60);border-radius:6px;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:11px}
+.chat-inp{padding:6px 8px;background:rgba(8,14,28,.98);border-top:1px solid rgba(201,168,76,.1);display:flex;align-items:center;gap:5px;flex-shrink:0}
+.ci-v{width:22px;height:22px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px}
+.ci-f{flex:1;background:rgba(0,0,0,.4);border:1px solid rgba(201,168,76,.18);border-radius:22px;padding:5px 9px;font-size:7px;color:#4a6080}
+.ci-s{width:22px;height:22px;background:linear-gradient(135deg,#a07820,#c9a84c);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:10px}
+.chat-side{width:80px;background:#0a1220;border-left:1px solid rgba(201,168,76,.1);padding:8px 6px;display:flex;flex-direction:column;gap:5px;flex-shrink:0}
+.cs-ttl{font-size:6px;font-weight:900;color:#e8edf5;margin-bottom:2px;font-family:'Cinzel',serif;font-size:7px}
+.ca-btn{background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.08));border:1px solid rgba(201,168,76,.25);border-radius:9px;padding:7px 5px;text-align:center;cursor:pointer}
+.ca-ic{font-size:16px;margin-bottom:3px}
+.ca-lb{font-size:6px;font-weight:800;color:#c9a84c;line-height:1.3}
+
+/* ═══════════════════════════════════════════════════════
+   8. QUIZ
+═══════════════════════════════════════════════════════ */
+.quiz-screen{background:var(--navy);height:100%;display:flex;flex-direction:column;overflow:hidden}
+.quiz-hdr{background:linear-gradient(135deg,#080e1c,#0a1428);padding:10px 12px 8px;border-bottom:1px solid rgba(201,168,76,.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.qh-logo-sm{font-size:14px}
+.qh-ttl{font-family:'Cinzel',serif;font-size:9px;font-weight:700;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center}
+.qh-timer{width:40px;height:40px;border-radius:50%;background:transparent;border:2.5px solid #c9a84c;display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:900;color:#c9a84c;box-shadow:0 0 14px rgba(201,168,76,.3)}
+.progress-track{display:flex;align-items:center;gap:3px;padding:5px 12px;flex-shrink:0;background:rgba(8,14,28,.5)}
+.pt-pip{width:14px;height:8px;border-radius:4px;background:rgba(201,168,76,.15);font-size:5.5px;font-weight:800;color:#4a6080;display:flex;align-items:center;justify-content:center}
+.pt-pip.done{background:rgba(201,168,76,.4);color:#c9a84c}
+.pt-pip.cur{background:linear-gradient(135deg,#a07820,#c9a84c);color:#fff;width:18px}
+.pt-cnt{font-size:5.5px;color:#4a6080;margin-left:auto;font-weight:700}
+.quiz-body{flex:1;display:flex;gap:0;overflow:hidden}
+.q-main{flex:1;padding:8px;overflow:hidden;display:flex;flex-direction:column;gap:5px}
+.q-num-lbl{font-size:7px;color:#c9a84c;font-weight:700}
+.q-txt{font-size:8px;color:#e8edf5;line-height:1.6;font-weight:500}
+.q-imgs{display:flex;gap:3px;background:rgba(0,0,0,.3);border-radius:8px;padding:5px;overflow:hidden}
+.q-img-box{width:38px;height:30px;background:linear-gradient(135deg,#1a2d50,#243d60);border-radius:5px;border:1px solid rgba(201,168,76,.2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px}
+.opts-lbl{font-size:7px;font-weight:800;color:#e8edf5}
+.q-opts{display:flex;flex-direction:column;gap:3px}
+.q-opt{background:rgba(13,21,37,.9);border:1px solid rgba(201,168,76,.15);border-radius:9px;padding:6px 8px;font-size:7px;color:#c8d5e5;display:flex;align-items:center;gap:6px;cursor:pointer}
+.q-opt.sel{border-color:#c9a84c;background:rgba(201,168,76,.1);color:#f0d080}
+.opt-ltr{width:16px;height:16px;border-radius:5px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#c9a84c;flex-shrink:0}
+.opt-ltr.sel{background:linear-gradient(135deg,#a07820,#c9a84c);border-color:#c9a84c;color:#fff}
+.q-ctrls{width:80px;background:#0a1220;border-left:1px solid rgba(201,168,76,.1);padding:8px 6px;display:flex;flex-direction:column;gap:5px;flex-shrink:0}
+.qc-btn{background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.08));border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
+.qc-arr{font-size:18px;color:#c9a84c;font-weight:900;line-height:1}
+.qc-lb{font-size:6px;font-weight:800;color:#c9a84c;line-height:1.3}
+
+/* ═══════════════════════════════════════════════════════
+   9. QUIZ RESULT
+═══════════════════════════════════════════════════════ */
+.result-screen{background:var(--navy);height:100%;display:flex;flex-direction:column;overflow:hidden}
+.res-top{background:linear-gradient(135deg,#080e1c,#0a1428);padding:8px;text-align:center;border-bottom:1px solid rgba(201,168,76,.1);flex-shrink:0}
+.res-title{font-family:'Cinzel',serif;font-size:10px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.1em}
+.res-body{flex:1;display:flex;gap:8px;padding:8px;overflow:hidden}
+.res-left{flex:1;display:flex;flex-direction:column;gap:5px;overflow:hidden}
+.score-ring-wrap{display:flex;justify-content:center}
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#c9a84c 0% 85%,rgba(201,168,76,.1) 85% 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px rgba(201,168,76,.3)}
+.score-inner{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#0a1428,#0d1e38);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-pct{font-size:16px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.score-lbl{font-size:6px;color:#4a6080}
+.perf-badge{text-align:center;font-size:7px;color:#c9a84c;font-weight:700}
+.an-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.an-card{background:rgba(13,21,37,.92);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:6px}
+.an-ttl{font-size:6px;font-weight:800;color:#c9a84c;margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.an-num{font-size:18px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.an-den{font-size:7px;color:#4a6080}
+.weak-i{font-size:6px;color:#9aacbe;display:flex;gap:3px;align-items:center;margin-bottom:1.5px}
+.sugg-i{font-size:6px;color:#9aacbe;display:flex;gap:3px;margin-bottom:1.5px}
+.res-right{width:100px;display:flex;flex-direction:column;gap:5px;flex-shrink:0}
+.chart-card{background:rgba(13,21,37,.92);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:6px;flex:1}
+.cc-ttl{font-size:6px;font-weight:800;color:#c9a84c;margin-bottom:4px}
+.bar-row{display:flex;align-items:flex-end;gap:3px;height:50px}
+.bar-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1}
+.bar-fill{width:10px;border-radius:3px 3px 0 0;background:linear-gradient(0deg,#a07820,#c9a84c,#f0d080);min-height:4px}
+.bar-nm{font-size:4.5px;color:#4a6080;text-align:center}
+.hist-card{background:rgba(13,21,37,.92);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:6px}
+
+/* ═══════════════════════════════════════════════════════
+   10. FACULTY DASHBOARD
+═══════════════════════════════════════════════════════ */
+.fac-screen{background:var(--navy);height:100%;display:flex;flex-direction:column;overflow:hidden}
+.fac-hdr{background:#0a1220;padding:8px 10px;border-bottom:1px solid rgba(201,168,76,.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.fh-brand{font-family:'Cinzel',serif;font-size:8.5px;font-weight:700;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:4px}
+.stat-cards{display:flex;gap:5px;padding:7px 8px;flex-shrink:0}
+.stat-c{flex:1;background:rgba(13,21,37,.92);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:7px 6px}
+.sc-lbl{font-size:5.5px;color:#4a6080;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.sc-val{font-size:14px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.sc-trend{font-size:5px;color:#22c55e;margin-top:2px}
+.fac-body{flex:1;padding:6px 8px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.perf-card{background:rgba(13,21,37,.92);border:1px solid rgba(201,168,76,.14);border-radius:10px;padding:7px;flex:1}
+.pc-ttl{font-size:6.5px;font-weight:800;color:#c9a84c;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em}
+.chart-wrap{height:60px;display:flex;align-items:flex-end;gap:3px;padding-left:4px}
+.cw-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1}
+.cw-bar-group{display:flex;gap:1px;align-items:flex-end}
+.cw-bar{width:7px;border-radius:2px 2px 0 0}
+.cw-bar.gold{background:linear-gradient(0deg,#a07820,#c9a84c)}
+.cw-bar.blue{background:linear-gradient(0deg,#1a3a6a,#2a5a9a)}
+.cw-lbl{font-size:4.5px;color:#4a6080}
+.fac-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex-shrink:0}
+.up-card{background:rgba(13,21,37,.92);border:1px solid rgba(201,168,76,.14);border-radius:10px;padding:7px}
+.upload-zone{background:rgba(0,0,0,.3);border:1.5px dashed rgba(201,168,76,.3);border-radius:8px;padding:10px;text-align:center;cursor:pointer}
+.uz-ic{font-size:18px;margin-bottom:3px}
+.uz-txt{font-size:6px;color:#c9a84c;font-weight:700}
+.uz-sub{font-size:5px;color:#4a6080;margin-top:1px}
+.qg-btn{background:linear-gradient(135deg,#a07820,#c9a84c);padding:5px;border-radius:7px;font-size:6px;font-weight:900;color:#fff;text-align:center;cursor:pointer;margin-bottom:3px}
+.qg-ai{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);padding:4px;border-radius:7px;font-size:6px;color:#c9a84c;text-align:center;cursor:pointer}
+.qg-recent{font-size:5.5px;color:#4a6080;margin-top:3px;display:flex;align-items:center;gap:3px}
+.ai-ins-card{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.03));border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:7px;display:flex;gap:6px;align-items:flex-start;flex-shrink:0}
+.ai-ins-ic{font-size:16px;flex-shrink:0}
+.ai-ins-txt{font-size:6px;color:#9aacbe;line-height:1.6}
+.ai-ins-btn{background:linear-gradient(135deg,#a07820,#c9a84c);padding:4px 8px;border-radius:20px;font-size:6px;font-weight:900;color:#fff;margin-top:4px;display:inline-block;cursor:pointer}
+
+/* ═══════════════════════════════════════════════════════
+   11. DOCUMENT HUB
+═══════════════════════════════════════════════════════ */
+.doc-screen{background:var(--navy);height:100%;display:flex;flex-direction:column;overflow:hidden}
+.doc-hdr{background:#0a1220;padding:8px 12px;text-align:center;border-bottom:1px solid rgba(201,168,76,.1);flex-shrink:0}
+.dh-ttl{font-family:'Cinzel',serif;font-size:10px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.1em}
+.dh-st{font-size:6px;color:#4a6080;margin-top:1px;letter-spacing:.1em}
+.doc-body{flex:1;display:flex;gap:8px;padding:10px;overflow:hidden}
+.doc-left{flex:1;display:flex;flex-direction:column;gap:8px}
+.upload-circle{width:120px;height:120px;border-radius:50%;border:3px solid #c9a84c;background:linear-gradient(135deg,#080e1c,#0d1628);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto;
+  box-shadow:0 0 30px rgba(201,168,76,.3),inset 0 1px 0 rgba(255,255,255,.05);cursor:pointer;position:relative}
+.uc-ring{position:absolute;inset:-4px;border-radius:50%;border:1px dashed rgba(201,168,76,.3);animation:spin 20s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.uc-ring-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.upload-ic{font-size:22px;margin-bottom:3px}
+.upload-txt{font-size:6.5px;font-weight:900;color:#c9a84c;text-align:center;line-height:1.3}
+.upload-sub{font-size:5px;color:#4a6080;text-align:center}
+.upload-mod-lbl{font-family:'Cinzel',serif;font-size:7px;font-weight:700;color:#c9a84c;text-align:center;margin-bottom:4px;text-transform:uppercase;letter-spacing:.1em}
+.upload-btn{background:linear-gradient(135deg,#a07820,#c9a84c);padding:7px;border-radius:22px;font-size:7px;font-weight:900;text-align:center;color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(201,168,76,.35);letter-spacing:.04em}
+.doc-right{width:100px;display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.dp-status{background:rgba(13,21,37,.92);border:1px solid rgba(201,168,76,.14);border-radius:9px;padding:7px}
+.dp-ttl{font-size:6px;font-weight:900;color:#c9a84c;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em}
+.dp-orb{width:50px;height:50px;border-radius:50%;margin:0 auto 6px;
+  background:radial-gradient(circle at 35% 35%,#f0d0e8,#d0a0c8,#a070a0,#806080);
+  box-shadow:0 0 20px rgba(200,120,220,.4),0 4px 12px rgba(0,0,0,.4);
+  animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(200,120,220,.4)}50%{box-shadow:0 0 35px rgba(200,120,220,.7)}}
+.dp-ai-lbl{text-align:center;font-size:6px;color:#c9a84c;font-weight:800;margin-bottom:5px}
+.dp-item{display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.25);border-radius:6px;padding:4px 6px;margin-bottom:3px}
+.dp-item-lbl{font-size:5.5px;color:#9aacbe;display:flex;gap-3px;align-items:center;gap:3px}
+.dp-check{color:#22c55e;font-size:10px;font-weight:900}
+.out-preview{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.14);border-radius:8px;padding:6px}
+.op-ttl{font-size:5.5px;font-weight:800;color:#c9a84c;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em}
+.op-row{display:flex;gap:4px;justify-content:center}
+.op-item{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:5px 4px;text-align:center;flex:1}
+.op-ic{font-size:12px;margin-bottom:2px}
+.op-lbl{font-size:5px;color:#c9a84c;font-weight:700}
+
+/* ═══════════════════════════════════════════════════════
+   12. STUDY HUB
+═══════════════════════════════════════════════════════ */
+.notes-screen{background:var(--navy);height:100%;display:flex;flex-direction:column;overflow:hidden}
+.ns-hdr{background:#0a1220;padding:7px 10px;border-bottom:1px solid rgba(201,168,76,.1);flex-shrink:0}
+.ns-tabs{display:flex;gap:3px;background:rgba(0,0,0,.4);border-radius:10px;padding:3px}
+.ns-tab{flex:1;padding:4px;border-radius:8px;font-size:7px;font-weight:800;text-align:center;color:#3a5a7a;cursor:pointer}
+.ns-tab.act{background:linear-gradient(135deg,#a07820,#c9a84c);color:#fff}
+.ns-body{flex:1;display:flex;overflow:hidden}
+.ns-col{flex:1;border-right:1px solid rgba(201,168,76,.08);padding:7px;overflow:hidden;display:flex;flex-direction:column;gap:4px}
+.ns-col:last-child{border-right:none}
+.nsc-ttl{font-size:6px;font-weight:900;color:#c9a84c;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px;display:flex;justify-content:space-between;align-items:center}
+.nsc-va{color:#c9a84c;opacity:.6;font-size:5.5px;cursor:pointer}
+.note-card{background:rgba(13,21,37,.9);border:1px solid rgba(201,168,76,.14);border-radius:8px;padding:5px;cursor:pointer}
+.nc-dt{font-size:5px;color:#4a6080;margin-bottom:1px}
+.nc-ttl{font-size:6.5px;font-weight:800;color:#e8edf5;margin-bottom:2px;line-height:1.3}
+.nc-txt{font-size:5.5px;color:#6a8aaa;line-height:1.5}
+.nc-acts{display:flex;gap:4px;margin-top:3px}
+.nca{font-size:5.5px;color:#c9a84c;cursor:pointer}
+.note-editor{background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.18);border-radius:10px;padding:7px;flex:1}
+.ne-dt{font-size:5px;color:#4a6080;margin-bottom:2px}
+.ne-ttl{font-size:8px;font-weight:900;color:#e8edf5;margin-bottom:5px;line-height:1.3}
+.ne-body{font-size:6px;color:#9aacbe;line-height:1.7;overflow:hidden}
+.highlight{background:rgba(201,168,76,.2);color:#f0d080;border-radius:2px;padding:0 2px}
+.ne-summary{background:rgba(0,0,0,.3);border-radius:7px;padding:5px;margin-top:5px}
+.nes-ttl{font-size:6px;font-weight:800;color:#c9a84c;margin-bottom:2px}
+.nes-txt{font-size:5.5px;color:#6a8aaa;line-height:1.5}
+.bm-folder{display:flex;gap:5px;align-items:center;background:rgba(13,21,37,.7);border-radius:7px;padding:4px 6px;cursor:pointer}
+.bmf-ic{font-size:14px}
+.bmf-nm{font-size:6px;font-weight:700;color:#e8edf5}
+.bmf-ct{font-size:5px;color:#4a6080}
+.bm-mod{display:flex;gap:4px;align-items:center;background:rgba(13,21,37,.7);border-radius:7px;padding:4px 5px;cursor:pointer}
+.bmm-img{width:20px;height:20px;background:linear-gradient(135deg,#1a2d50,#243d60);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.bmm-nm{font-size:6px;font-weight:700;color:#e8edf5}
+.bmm-st{color:#c9a84c;font-size:8px}
+
+/* ─── FOOTER ─── */
+.page-footer{text-align:center;margin-top:70px;padding:28px;border-top:1px solid rgba(201,168,76,.1)}
+.pf-title{font-family:'Cinzel',serif;font-size:16px;font-weight:900;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.pf-sub{font-size:11px;color:#3a5070;letter-spacing:.1em}
+
+/* ─── ANIMATIONS ─── */
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes rotateSlow{to{transform:rotate(360deg)}}
+@keyframes glowPulse{0%,100%{opacity:.5}50%{opacity:1}}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="ph-title">DentAI Learn</div>
+  <div class="ph-sub">Complete UI Design System · Premium Screen Showcase</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+  ROW 1 — ONBOARDING
+════════════════════════════════════════════ -->
+<div class="section-label">Onboarding</div>
+<div class="grid">
+
+  <!-- 1. Splash -->
+  <div class="screen-wrap">
+    <div class="screen-label">1. Splash Screen</div>
+    <div class="phone">
+      <div class="inner">
+        <div class="splash">
+          <div class="hex-bg"></div>
+          <div class="sp-logo">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M14 4 C10 4 7 7 7 11 C7 14 8.5 16 10 17.5 L10 22 C10 23.1 10.9 24 12 24 L16 24 C17.1 24 18 23.1 18 22 L18 17.5 C19.5 16 21 14 21 11 C21 7 18 4 14 4Z" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+              <path d="M11 11 L17 11 M14 8 L14 14" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M10 5 L6 2 M18 5 L22 2" stroke="#c9a84c" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <!-- Iridescent Pearl Tooth SVG -->
+          <svg class="sp-tooth-svg" viewBox="0 0 90 100" style="animation:floatY 3s ease-in-out infinite">
+            <defs>
+              <radialGradient id="toothGrad" cx="35%" cy="25%" r="70%">
+                <stop offset="0%" stop-color="#f8f0e4"/>
+                <stop offset="25%" stop-color="#e8d8c0"/>
+                <stop offset="50%" stop-color="#d4c0a0"/>
+                <stop offset="75%" stop-color="#c0a888"/>
+                <stop offset="100%" stop-color="#a89070"/>
+              </radialGradient>
+              <radialGradient id="iridGrad" cx="40%" cy="30%" r="60%">
+                <stop offset="0%" stop-color="rgba(200,220,255,0.3)"/>
+                <stop offset="30%" stop-color="rgba(180,255,200,0.2)"/>
+                <stop offset="60%" stop-color="rgba(255,200,220,0.15)"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+              <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#c9a84c" stop-opacity=".6"/>
+                <stop offset="50%" stop-color="#f0d080" stop-opacity=".8"/>
+                <stop offset="100%" stop-color="#c9a84c" stop-opacity=".4"/>
+              </linearGradient>
+              <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Main tooth shape -->
+            <path d="M18 28 C18 18 22 10 32 8 C38 6 44 7 50 8 C60 10 70 18 72 28 C75 40 74 52 70 62 C68 68 65 76 60 82 C57 86 54 88 50 88 C47 88 45 86 44 83 C43 80 42 76 42 72 C42 72 40 72 40 72 C40 76 39 80 38 83 C37 86 35 88 32 88 C28 88 25 86 22 82 C17 76 14 68 12 62 C8 52 7 40 10 28 Z" fill="url(#toothGrad)"/>
+            <!-- Iridescent overlay -->
+            <path d="M18 28 C18 18 22 10 32 8 C38 6 44 7 50 8 C60 10 70 18 72 28 C75 40 74 52 70 62 C68 68 65 76 60 82 C57 86 54 88 50 88 C47 88 45 86 44 83 C43 80 42 76 42 72 C42 72 40 72 40 72 C40 76 39 80 38 83 C37 86 35 88 32 88 C28 88 25 86 22 82 C17 76 14 68 12 62 C8 52 7 40 10 28 Z" fill="url(#iridGrad)"/>
+            <!-- Gold border lines -->
+            <path d="M18 28 C18 18 22 10 32 8 C38 6 44 7 50 8 C60 10 70 18 72 28 C75 40 74 52 70 62 C68 68 65 76 60 82 C57 86 54 88 50 88 C47 88 45 86 44 83 C43 80 42 76 42 72 C42 72 40 72 40 72 C40 76 39 80 38 83 C37 86 35 88 32 88 C28 88 25 86 22 82 C17 76 14 68 12 62 C8 52 7 40 10 28 Z" fill="none" stroke="url(#goldLine)" stroke-width="1.5"/>
+            <!-- Internal anatomy lines -->
+            <path d="M32 20 C32 20 34 38 34 55 C34 68 32 78 32 84" stroke="url(#goldLine)" stroke-width=".8" fill="none" stroke-dasharray="3 4" opacity=".6"/>
+            <path d="M50 20 C50 20 48 38 48 55 C48 68 50 78 50 84" stroke="url(#goldLine)" stroke-width=".8" fill="none" stroke-dasharray="3 4" opacity=".6"/>
+            <!-- Pulp chamber -->
+            <path d="M35 25 C35 20 40 18 45 18 C50 18 55 20 55 25 C55 32 52 42 45 48 C38 42 35 32 35 25Z" fill="rgba(200,100,100,0.2)" stroke="url(#goldLine)" stroke-width=".7"/>
+            <!-- Highlight shine -->
+            <ellipse cx="35" cy="22" rx="10" ry="7" fill="rgba(255,255,255,0.18)" transform="rotate(-20 35 22)"/>
+          </svg>
+          <div class="sp-title">DentAI Learn</div>
+          <div class="sp-sub">Interactive Oral Pathology Learning</div>
+          <div class="sp-wave">
+            <div class="sp-wline"></div>
+            <div class="sp-ai">AI</div>
+            <div class="sp-wline"></div>
+          </div>
+          <div class="sp-badges">
+            <div class="sp-badge"><span>⬡</span> AI</div>
+            <div class="sp-badge">Powered by AI + AR</div>
+            <div class="sp-badge"><span>⬡</span> AR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Login -->
+  <div class="screen-wrap">
+    <div class="screen-label">2. Sign In</div>
+    <div class="phone">
+      <div class="inner">
+        <div class="login-wrap">
+          <div class="login-left">
+            <div style="font-size:22px">🦷</div>
+            <!-- Small pearl tooth -->
+            <svg width="70" height="80" viewBox="0 0 90 100" style="filter:drop-shadow(0 4px 12px rgba(201,168,76,.3));animation:floatY 3s ease-in-out infinite">
+              <defs>
+                <radialGradient id="t2g" cx="35%" cy="25%" r="70%">
+                  <stop offset="0%" stop-color="#f8f0e4"/><stop offset="50%" stop-color="#d4c0a0"/><stop offset="100%" stop-color="#a89070"/>
+                </radialGradient>
+                <radialGradient id="t2i" cx="40%" cy="30%" r="60%">
+                  <stop offset="0%" stop-color="rgba(200,220,255,0.3)"/><stop offset="50%" stop-color="rgba(180,255,200,0.2)"/><stop offset="100%" stop-color="transparent"/>
+                </radialGradient>
+              </defs>
+              <path d="M18 28 C18 18 22 10 32 8 C38 6 44 7 50 8 C60 10 70 18 72 28 C75 40 74 52 70 62 C68 68 65 76 60 82 C57 86 54 88 50 88 C47 88 45 86 44 83 C43 80 42 76 42 72 L40 72 C40 76 39 80 38 83 C37 86 35 88 32 88 C28 88 25 86 22 82 C17 76 14 68 12 62 C8 52 7 40 10 28 Z" fill="url(#t2g)"/>
+              <path d="M18 28 C18 18 22 10 32 8 C38 6 44 7 50 8 C60 10 70 18 72 28 C75 40 74 52 70 62 C68 68 65 76 60 82 C57 86 54 88 50 88 C47 88 45 86 44 83 C43 80 42 76 42 72 L40 72 C40 76 39 80 38 83 C37 86 35 88 32 88 C28 88 25 86 22 82 C17 76 14 68 12 62 C8 52 7 40 10 28 Z" fill="url(#t2i)"/>
+              <path d="M18 28 C18 18 22 10 32 8 C38 6 44 7 50 8 C60 10 70 18 72 28 C75 40 74 52 70 62 C68 68 65 76 60 82 C57 86 54 88 50 88 C47 88 45 86 44 83 C43 80 42 76 42 72 L40 72 C40 76 39 80 38 83 C37 86 35 88 32 88 C28 88 25 86 22 82 C17 76 14 68 12 62 C8 52 7 40 10 28 Z" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-opacity=".5"/>
+              <ellipse cx="35" cy="22" rx="10" ry="7" fill="rgba(255,255,255,0.18)" transform="rotate(-20 35 22)"/>
+            </svg>
+          </div>
+          <div class="login-right">
+            <div class="lr-brand">Dent<em>AI</em> Learn</div>
+            <div class="lr-pro">Professional Learning Platform</div>
+            <div class="lr-h">Sign in to your account</div>
+            <div>
+              <div class="lr-lbl">Email</div>
+              <div class="lr-input"><span class="lr-icon">✉</span><span style="color:#aaa">Enter your university email</span></div>
+            </div>
+            <div>
+              <div class="lr-lbl">Password</div>
+              <div class="lr-input"><span class="lr-icon">🔒</span><span style="flex:1;color:#aaa">Enter your password</span><span style="font-size:10px;opacity:.3">👁</span></div>
+            </div>
+            <div class="lr-btn">Login</div>
+            <div class="lr-forgot">Forgot password?</div>
+            <div class="lr-divider"><div class="lr-dline"></div><div class="lr-dtext">Or continue with:</div><div class="lr-dline"></div></div>
+            <div class="lr-social lr-google"><span style="color:#4285f4;font-weight:900">G</span> Continue with Google</div>
+            <div class="lr-social lr-apple">🍎 Continue with Apple</div>
+            <div class="lr-new">New user? <span>Create an account</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Register -->
+  <div class="screen-wrap">
+    <div class="screen-label">3. Register</div>
+    <div class="phone">
+      <div class="inner">
+        <div class="reg">
+          <div class="reg-glow"></div>
+          <div class="reg-logo">🦷</div>
+          <div class="reg-title">DentAI Learn</div>
+          <div class="reg-tooth">🦷</div>
+          <div class="reg-card">
+            <div class="reg-tabs">
+              <div class="rt active">Student</div>
+              <div class="rt">Faculty</div>
+            </div>
+            <div style="font-size:8.5px;font-weight:900;color:#e8edf5;text-align:center;margin-bottom:8px">Student Registration</div>
+            <div class="reg-field"><div class="rf-lbl">Name</div><div class="rf-inp"><span class="rf-ico">👤</span><span style="color:#4a6080">e.g., John Doe</span></div></div>
+            <div class="reg-field"><div class="rf-lbl">Roll Number</div><div class="rf-inp"><span class="rf-ico">🪪</span><span style="color:#4a6080">e.g., 2024-D101</span></div></div>
+            <div class="reg-field"><div class="rf-lbl">University</div><div class="rf-inp"><span class="rf-ico">🏛</span><span style="color:#4a6080">e.g., Apex Dental School</span></div></div>
+            <div class="reg-field"><div class="rf-lbl">Email</div><div class="rf-inp"><span class="rf-ico">✉</span><span style="color:#4a6080">john.doe@uni.edu</span></div></div>
+            <div class="reg-field"><div class="rf-lbl">Password</div><div class="rf-inp"><span class="rf-ico">🔒</span><span style="flex:1;color:#4a6080">••••••••••</span><span style="opacity:.3;font-size:10px">👁</span></div></div>
+            <div class="reg-btn">Create Student Account</div>
+            <div class="reg-login">Already have an account? <span>Log In.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /grid row 1 -->
+
+<!-- ════════════════════════════════════════════
+  ROW 2 — STUDENT CORE
+════════════════════════════════════════════ -->
+<div class="section-label">Student Core</div>
+<div class="grid">
+
+  <!-- 4. Student Dashboard -->
+  <div class="screen-wrap">
+    <div class="screen-label">4. Student Dashboard</div>
+    <div class="tablet">
+      <div class="inner">
+        <div class="dash">
+          <div class="dash-hdr">
+            <div class="dh-row">
+              <div style="display:flex;align-items:center">
+                <div class="dh-av">🧑‍⚕️</div>
+                <div class="dh-txt">
+                  <div class="dh-greet">Welcome back,</div>
+                  <div class="dh-name">Ahmed Raza!</div>
+                </div>
+              </div>
+              <div class="notif">🔔<div class="notif-dot">3</div></div>
+            </div>
+            <div class="search-bar"><span>🔍</span><span>Search pathology topics...</span>
+              <span style="margin-left:auto;font-size:16px">🦷</span>
+            </div>
+          </div>
+          <div class="dash-body">
+            <div class="dash-grid">
+              <div class="d-card">
+                <div class="dc-ttl">Continue Learning</div>
+                <div class="cont-item">
+                  <div class="ci-img">🔬</div>
+                  <div style="flex:1">
+                    <div class="ci-txt">Oral Lesions: Odontogenic Tumors</div>
+                    <div class="ci-prog"><div class="ci-fill"></div></div>
+                    <div class="ci-pct">65% complete</div>
+                  </div>
+                </div>
+                <div style="font-size:6px;color:#c9a84c;margin-top:4px;font-weight:700">Last Topic</div>
+                <div style="font-size:6px;color:#4a6080;margin-top:2px">A Comprehensive Guide</div>
+                <div style="font-size:6px;color:#4a6080;margin-top:1px">A Comprehensive Guide</div>
+              </div>
+              <div class="d-card">
+                <div class="dc-ttl">Explore 3D Models</div>
+                <div class="model-grid2">
+                  <div class="mi2"><div class="mi2-icon">🦷</div><div class="mi2-lbl">Tooth anatomy</div></div>
+                  <div class="mi2"><div class="mi2-icon">🫁</div><div class="mi2-lbl">Oral cysts</div></div>
+                  <div class="mi2" style="grid-column:1/-1"><div class="mi2-icon">🦴</div><div class="mi2-lbl">Jaw lesions</div></div>
+                </div>
+              </div>
+              <div class="d-card">
+                <div class="dc-ttl">Quiz Section</div>
+                <div class="qs-btn">▶ Start quiz</div>
+                <div class="qs-prev">Previous score: <span>88%</span></div>
+                <div style="font-size:6px;color:#4a6080;margin-top:3px;display:flex;align-items:center;gap:3px">🔥 Daily challenge</div>
+              </div>
+              <div class="d-card">
+                <div class="dc-ttl">AI Chatbot</div>
+                <div style="text-align:center;font-size:24px;margin:4px 0">🤖</div>
+                <div class="qs-btn" style="background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.25)">Ask DentAI</div>
+                <div class="dc-ttl" style="margin-top:6px">AR Learning</div>
+                <div class="ar-card">
+                  <div class="ar-lbl">🥽 View in AR</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav">
+            <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl act">Home</div></div>
+            <div class="nav-item"><div class="ni-icon">📊</div><div class="ni-lbl">Dashboard</div></div>
+            <div class="nav-item"><div class="ni-icon">📖</div><div class="ni-lbl">Modules</div></div>
+            <div class="nav-item"><div class="ni-icon">📝</div><div class="ni-lbl">Quiz</div></div>
+            <div class="nav-item"><div class="ni-icon">📋</div><div class="ni-lbl">Tests</div></div>
+            <div class="nav-item"><div class="ni-icon">🤖</div><div class="ni-lbl">AI Chatbot</div></div>
+            <div class="nav-item"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Learning Module -->
+  <div class="screen-wrap">
+    <div class="screen-label">5. Learning Module</div>
+    <div class="tablet">
+      <div class="inner">
+        <div class="mod-screen">
+          <div class="mod-sidebar">
+            <div class="msb-brand">DentAI 🦷<br/>Oral Pathology<br/>Learning Modules</div>
+            <div class="msb-cat act"><div class="msc-ic">🦷</div><div class="msc-nm">Odontogenic Cysts</div><div class="msc-d">Types of odontogenic cysts</div></div>
+            <div class="msb-cat"><div class="msc-ic">🔬</div><div class="msc-nm">Tumors</div><div class="msc-d">Benign & malignant</div></div>
+            <div class="msb-cat"><div class="msc-ic">⚠️</div><div class="msc-nm">Lesions</div><div class="msc-d">Oral lesions types</div></div>
+            <div class="msb-cat"><div class="msc-ic">🦷</div><div class="msc-nm">Tooth Anatomy</div><div class="msc-d">Tooth structure</div></div>
+          </div>
+          <div class="mod-main">
+            <div class="mod-tabs">
+              <div class="mtt act">Overview</div><div class="mtt">Symptoms</div><div class="mtt">Diagnosis</div><div class="mtt">Treatment</div><div class="mtt">3D Model</div><div class="mtt">Notes</div>
+            </div>
+            <div class="mod-body">
+              <div class="mod-txt">
+                <div class="mod-h">Odontogenic Cysts</div>
+                <div class="mod-p">Comprehensive overview of common odontogenic cysts and their clinical significance in oral pathology.</div>
+                <div class="mod-bullet"><div class="mod-btext"><strong style="color:#e8edf5">Radicular Cyst:</strong> Most common jaw cyst arising from periapical granuloma epithelium</div></div>
+                <div class="mod-bullet"><div class="mod-btext"><strong style="color:#e8edf5">Dentigerous Cyst:</strong> Arises around crown of unerupted tooth</div></div>
+                <div class="mod-bullet"><div class="mod-btext"><strong style="color:#e8edf5">Radicular Cyst:</strong> Figure — Radicular cyst</div></div>
+                <div class="mod-bullet"><div class="mod-btext"><strong style="color:#e8edf5">Dentigerous Cyst:</strong> Comprehensive centrated oral nonorm cyst</div></div>
+                <div class="def-box">
+                  <div class="def-ttl">Definition</div>
+                  <div class="def-txt">Odontogenic cysts are pathological cavities lined by epithelium derived from odontogenic tissue — fluid-filled, bone-enclosed, with diverse clinical behavior.</div>
+                </div>
+                <div class="def-box" style="margin-top:4px">
+                  <div class="def-ttl">Key Features</div>
+                  <div class="def-txt">• Well-defined radiolucency · • Epithelial lining · • Fluid-filled cavity</div>
+                </div>
+                <div class="exp-btn">Explore 3D Model →</div>
+              </div>
+              <div class="mod-diag">
+                <div class="diag-box">
+                  <svg width="85" height="80" viewBox="0 0 200 180">
+                    <defs>
+                      <linearGradient id="jawg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e8d5b0"/><stop offset="100%" stop-color="#b8a070"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M15 60 Q50 20 100 15 Q150 20 185 60 Q180 90 165 100 L160 110 L140 115 L100 118 L60 115 L40 110 L35 100 Z" fill="url(#jawg)" stroke="#c9a84c" stroke-width="1" stroke-opacity=".5"/>
+                    <rect x="38" y="97" width="12" height="16" rx="3" fill="#f0e8d0" stroke="#c9a84c" stroke-width=".6" stroke-opacity=".4"/>
+                    <rect x="53" y="97" width="12" height="16" rx="3" fill="#f0e8d0" stroke="#c9a84c" stroke-width=".6" stroke-opacity=".4"/>
+                    <rect x="68" y="97" width="13" height="16" rx="3" fill="#f0e8d0" stroke="#c9a84c" stroke-width=".6" stroke-opacity=".4"/>
+                    <rect x="85" y="96" width="15" height="17" rx="3" fill="#f0e8d0" stroke="#c9a84c" stroke-width=".6" stroke-opacity=".4"/>
+                    <rect x="103" y="96" width="15" height="17" rx="3" fill="#f0e8d0" stroke="#c9a84c" stroke-width=".6" stroke-opacity=".4"/>
+                    <rect x="121" y="97" width="13" height="16" rx="3" fill="#f0e8d0" stroke="#c9a84c" stroke-width=".6" stroke-opacity=".4"/>
+                    <rect x="137" y="97" width="12" height="16" rx="3" fill="#f0e8d0" stroke="#c9a84c" stroke-width=".6" stroke-opacity=".4"/>
+                    <ellipse cx="60" cy="70" rx="14" ry="10" fill="rgba(255,100,80,.2)" stroke="rgba(255,100,80,.6)" stroke-width="1.2"/>
+                    <text x="55" y="55" font-size="8" fill="#c9a84c" font-weight="bold">Radicular</text>
+                    <text x="110" y="55" font-size="8" fill="#c9a84c" font-weight="bold">Dentigerous</text>
+                    <line x1="65" y1="58" x2="60" y2="63" stroke="#c9a84c" stroke-width=".8"/>
+                    <line x1="130" y1="58" x2="145" y2="70" stroke="#c9a84c" stroke-width=".8"/>
+                    <ellipse cx="150" cy="80" rx="10" ry="8" fill="rgba(100,180,255,.15)" stroke="rgba(100,180,255,.5)" stroke-width="1"/>
+                  </svg>
+                </div>
+                <div style="font-size:5px;color:#4a6080;text-align:center;line-height:1.7">Radicular Cyst<br/>Dentigerous Cyst<br/>Lateral Periodontal Cyst<br/>Reticular Cyst</div>
+              </div>
+            </div>
+            <div class="nav" style="border-top:1px solid rgba(201,168,76,.1)">
+              <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+              <div class="nav-item"><div class="ni-icon">📊</div><div class="ni-lbl">Dashboard</div></div>
+              <div class="nav-item"><div class="ni-icon">📖</div><div class="ni-lbl act">Modules</div></div>
+              <div class="nav-item"><div class="ni-icon">📝</div><div class="ni-lbl">Quiz</div></div>
+              <div class="nav-item"><div class="ni-icon">🤖</div><div class="ni-lbl">AI</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /row 2 -->
+
+<!-- ════════════════════════════════════════════
+  ROW 3 — AR VIEWERS (HERO SCREENS)
+════════════════════════════════════════════ -->
+<div class="section-label">AR & 3D Pathology Viewers</div>
+<div class="grid">
+
+  <!-- 6. AR Pathology Analysis (full width wide) -->
+  <div class="screen-wrap">
+    <div class="screen-label">6. AR Pathology Analysis</div>
+    <div class="wide-tablet">
+      <div class="inner">
+        <div class="arw-screen">
+          <div class="arw-header">
+            <div class="arw-logo">
+              <svg width="18" height="18" viewBox="0 0 28 28" fill="none">
+                <path d="M14 4 C10 4 7 7 7 11 C7 14 8.5 16 10 17.5 L10 22 C10 23.1 10.9 24 12 24 L16 24 C17.1 24 18 23.1 18 22 L18 17.5 C19.5 16 21 14 21 11 C21 7 18 4 14 4Z" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+                <path d="M10 5 L6 2 M18 5 L22 2" stroke="#c9a84c" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+              DentAI
+            </div>
+            <div style="font-size:9px;font-weight:800;color:#c9a84c;font-family:'Cinzel',serif;text-align:center">AR Pathology Analysis</div>
+            <div class="arw-student">Student<div class="arw-av">👤</div></div>
+          </div>
+          <div class="arw-body">
+            <!-- Main AR Viewport -->
+            <div class="arw-main">
+              <div class="ar-bg" style="background:linear-gradient(135deg,#04080f,#060c18 50%,#04080f);background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2246%22><path d=%22M20 2 L38 12 L38 34 L20 44 L2 34 L2 12 Z%22 fill=%22none%22 stroke=%22%23c9a84c%22 stroke-width=%221%22 opacity=%22.03%22/></svg>')"></div>
+              
+              <!-- HERO 3D JAW/SKULL SVG -->
+              <svg style="position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);filter:drop-shadow(0 8px 32px rgba(201,168,76,.35))" width="340" height="280" viewBox="0 0 560 420">
+                <defs>
+                  <radialGradient id="jawR" cx="30%" cy="25%" r="75%">
+                    <stop offset="0%" stop-color="#f0e0c0"/>
+                    <stop offset="30%" stop-color="#d4b888"/>
+                    <stop offset="65%" stop-color="#b89860"/>
+                    <stop offset="100%" stop-color="#907840"/>
+                  </radialGradient>
+                  <radialGradient id="jawSheen" cx="30%" cy="25%" r="65%">
+                    <stop offset="0%" stop-color="rgba(200,220,255,0.25)"/>
+                    <stop offset="40%" stop-color="rgba(180,255,200,0.12)"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                  </radialGradient>
+                  <linearGradient id="jawGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#c9a84c" stop-opacity=".7"/>
+                    <stop offset="50%" stop-color="#f0d080" stop-opacity=".9"/>
+                    <stop offset="100%" stop-color="#c9a84c" stop-opacity=".5"/>
+                  </linearGradient>
+                  <linearGradient id="toothWG" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f8f4ec"/>
+                    <stop offset="100%" stop-color="#e0d0b0"/>
+                  </linearGradient>
+                  <radialGradient id="lesionR" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ff8060" stop-opacity=".9"/>
+                    <stop offset="60%" stop-color="#cc4020" stop-opacity=".7"/>
+                    <stop offset="100%" stop-color="#882010" stop-opacity=".4"/>
+                  </radialGradient>
+                  <filter id="glowF" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="4" result="b"/>
+                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <filter id="lesionGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="6" result="b"/>
+                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+
+                <!-- UPPER JAW / MAXILLA -->
+                <path d="M60 130 Q80 60 170 40 Q220 30 280 28 Q340 30 390 40 Q480 60 500 130 Q510 175 490 210 Q470 230 440 240 Q400 248 360 244 Q330 242 300 244 Q270 246 240 242 Q200 238 160 244 Q130 248 110 232 Q85 215 70 195 Z" fill="url(#jawR)" stroke="url(#jawGold)" stroke-width="2"/>
+                <path d="M60 130 Q80 60 170 40 Q220 30 280 28 Q340 30 390 40 Q480 60 500 130 Q510 175 490 210 Q470 230 440 240 Q400 248 360 244 Q330 242 300 244 Q270 246 240 242 Q200 238 160 244 Q130 248 110 232 Q85 215 70 195 Z" fill="url(#jawSheen)"/>
+
+                <!-- UPPER TEETH row -->
+                <g filter="url(#glowF)">
+                  <rect x="100" y="218" width="28" height="36" rx="7" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1.2"/>
+                  <rect x="132" y="220" width="28" height="34" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="164" y="220" width="28" height="34" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="198" y="220" width="34" height="34" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="236" y="218" width="36" height="36" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="278" y="218" width="36" height="36" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="320" y="220" width="30" height="34" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="354" y="220" width="28" height="34" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="386" y="220" width="26" height="32" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="416" y="222" width="24" height="30" rx="5" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                </g>
+                <!-- Tooth shine highlights -->
+                <rect x="104" y="220" width="10" height="12" rx="5" fill="rgba(255,255,255,0.25)"/>
+                <rect x="200" y="222" width="12" height="10" rx="5" fill="rgba(255,255,255,0.2)"/>
+                <rect x="240" y="220" width="14" height="12" rx="6" fill="rgba(255,255,255,0.22)"/>
+
+                <!-- LOWER JAW / MANDIBLE -->
+                <path d="M90 250 Q78 280 72 320 Q68 360 80 385 Q100 405 140 410 Q200 416 280 414 Q360 416 420 410 Q460 405 480 385 Q492 360 488 320 Q482 280 470 250 Q450 244 420 242 Q380 238 340 242 Q310 244 280 244 Q250 244 220 242 Q180 238 140 242 Q110 244 90 250 Z" fill="url(#jawR)" stroke="url(#jawGold)" stroke-width="2"/>
+                <path d="M90 250 Q78 280 72 320 Q68 360 80 385 Q100 405 140 410 Q200 416 280 414 Q360 416 420 410 Q460 405 480 385 Q492 360 488 320 Q482 280 470 250 Q450 244 420 242 Q380 238 340 242 Q310 244 280 244 Q250 244 220 242 Q180 238 140 242 Q110 244 90 250 Z" fill="url(#jawSheen)"/>
+
+                <!-- LOWER TEETH -->
+                <g filter="url(#glowF)">
+                  <rect x="108" y="242" width="26" height="30" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="138" y="242" width="26" height="30" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="168" y="242" width="26" height="30" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="198" y="242" width="30" height="30" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="234" y="242" width="32" height="30" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="272" y="242" width="32" height="30" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <!-- Highlighted / diseased area tooth -->
+                  <rect x="310" y="240" width="28" height="32" rx="6" fill="#f0c870" stroke="#c9a84c" stroke-width="2"/>
+                  <rect x="342" y="242" width="26" height="30" rx="6" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="372" y="244" width="24" height="28" rx="5" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                  <rect x="400" y="244" width="22" height="28" rx="5" fill="url(#toothWG)" stroke="url(#jawGold)" stroke-width="1"/>
+                </g>
+
+                <!-- LESION / AMELOBLASTOMA -->
+                <ellipse cx="345" cy="310" rx="32" ry="28" fill="url(#lesionR)" filter="url(#lesionGlow)"/>
+                <ellipse cx="345" cy="310" rx="32" ry="28" fill="rgba(255,120,80,.15)" stroke="rgba(255,80,40,.8)" stroke-width="2"/>
+                <!-- Lesion glow rings -->
+                <ellipse cx="345" cy="310" rx="40" ry="35" fill="none" stroke="rgba(255,80,40,.3)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <ellipse cx="345" cy="310" rx="50" ry="43" fill="none" stroke="rgba(255,80,40,.15)" stroke-width="1"/>
+                <!-- Small lesion particle -->
+                <circle cx="360" cy="296" r="7" fill="rgba(255,200,100,.6)" stroke="rgba(255,180,80,.8)" stroke-width="1.5"/>
+
+                <!-- Nerve pathways -->
+                <path d="M280 200 Q290 240 300 280 Q310 320 320 360" stroke="rgba(100,180,255,.4)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+                <path d="M380 200 Q370 240 360 280 Q348 320 348 350" stroke="rgba(100,180,255,.4)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+
+                <!-- Gold anatomical lines -->
+                <path d="M160 150 L160 240" stroke="rgba(201,168,76,.25)" stroke-width="1" stroke-dasharray="4 4"/>
+                <path d="M400 150 L400 240" stroke="rgba(201,168,76,.25)" stroke-width="1" stroke-dasharray="4 4"/>
+                <path d="M280 80 L280 220" stroke="rgba(201,168,76,.2)" stroke-width="1" stroke-dasharray="3 5"/>
+              </svg>
+
+              <!-- AR Label Tags -->
+              <div style="position:absolute;top:20%;left:6%;background:rgba(8,14,28,.88);border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:4px 9px;font-size:6.5px;font-weight:700;color:#e8d5a0;backdrop-filter:blur(4px);white-space:nowrap">
+                Tooth structure
+                <div style="position:absolute;right:-22px;top:50%;width:20px;height:1px;background:rgba(201,168,76,.5)"></div>
+              </div>
+              <div style="position:absolute;top:68%;left:5%;background:rgba(8,14,28,.88);border:1px solid rgba(255,80,40,.5);border-radius:8px;padding:4px 9px;font-size:6.5px;font-weight:700;color:#ffb0a0;white-space:nowrap">
+                Disease Visualization<br/><span style="color:#ff8060;font-size:5.5px">Ameloblastoma detected</span>
+              </div>
+              <div style="position:absolute;bottom:12%;left:50%;transform:translateX(-50%);display:flex;gap:3px">
+                <div style="width:16px;height:5px;background:rgba(201,168,76,.25);border-radius:3px"></div>
+                <div style="width:16px;height:5px;background:rgba(201,168,76,.25);border-radius:3px"></div>
+                <div style="width:22px;height:5px;background:#c9a84c;border-radius:3px"></div>
+                <div style="width:16px;height:5px;background:rgba(201,168,76,.25);border-radius:3px"></div>
+                <div style="width:16px;height:5px;background:rgba(201,168,76,.25);border-radius:3px"></div>
+                <div style="width:16px;height:5px;background:rgba(201,168,76,.25);border-radius:3px"></div>
+              </div>
+            </div>
+            <!-- Controls Panel -->
+            <div class="arw-controls">
+              <div class="arwc-title">Scale</div>
+              <div class="knob-wrap"><div class="knob"><div class="knob-inner"></div></div></div>
+              <div class="arwc-row">
+                <div class="arwc-btn">
+                  <div class="arwc-icon">🌐</div>
+                  <div class="arwc-lbl">Rotate</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div style="font-size:5.5px;color:#4a6080;text-align:right;font-weight:700">Annotation Toggle</div>
+                  <div class="ov-toggle on" style="margin-left:auto"><div class="ov-knob"></div></div>
+                </div>
+              </div>
+              <div style="margin-top:4px">
+                <div class="knob-wrap"><div class="knob" style="width:34px;height:34px"><div class="knob-inner"></div></div></div>
+                <div style="font-size:6px;color:#4a6080;text-align:center;margin-top:2px">Rotate</div>
+              </div>
+              <!-- Mini jaw schematic -->
+              <div class="arw-mini">
+                <svg width="80" height="40" viewBox="0 0 200 100">
+                  <path d="M20 30 Q50 10 100 8 Q150 10 180 30 Q185 50 175 65 L100 70 L25 65 Q15 50 20 30Z" fill="rgba(201,168,76,.15)" stroke="#c9a84c" stroke-width="1.5" stroke-opacity=".5"/>
+                  <rect x="30" y="58" width="12" height="10" rx="2" fill="#c9a84c" opacity=".4"/>
+                  <rect x="45" y="58" width="12" height="10" rx="2" fill="#c9a84c" opacity=".4"/>
+                  <rect x="60" y="58" width="12" height="10" rx="2" fill="#c9a84c" opacity=".4"/>
+                  <rect x="75" y="57" width="14" height="11" rx="2" fill="#c9a84c" opacity=".5"/>
+                  <rect x="92" y="57" width="14" height="11" rx="2" fill="#c9a84c" opacity=".5"/>
+                  <ellipse cx="155" cy="58" rx="14" ry="11" fill="rgba(255,80,40,.5)" stroke="rgba(255,60,20,.8)" stroke-width="1.2"/>
+                  <text x="115" y="88" font-size="10" fill="#4a6080">Jaw lesion</text>
+                  <text x="8" y="88" font-size="10" fill="#4a6080">Tooth structure</text>
+                </svg>
+              </div>
+              <!-- Annotated Features legend -->
+              <div style="font-size:6px;font-weight:900;color:#c9a84c;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Annotated Features</div>
+              <div class="feat-legend">
+                <div class="feat-item"><div class="feat-dot" style="background:#f0e8d0"></div>Enamel</div>
+                <div class="feat-item"><div class="feat-dot" style="background:#d4b888"></div>Nerves</div>
+                <div class="feat-item"><div class="feat-dot" style="background:#ff4020"></div>Lesion</div>
+                <div class="feat-item"><div class="feat-dot" style="background:#b8a070"></div>Bone</div>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom nav -->
+          <div class="arw-nav">
+            <div class="an-item"><div class="an-ic">🏠</div><div class="an-lb act">Home</div></div>
+            <div class="an-item"><div class="an-ic">⬛</div><div class="an-lb">Modules</div></div>
+            <div class="an-item"><div class="an-ic">💬</div><div class="an-lb">Chat</div></div>
+            <div class="an-item"><div class="an-ic">👤</div><div class="an-lb">Profile</div></div>
+            <div class="an-item"><div class="an-ic">⚙️</div><div class="an-lb">Settings</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. AR Pathology Viewer (Tablet, Jaw Lesions) -->
+  <div class="screen-wrap">
+    <div class="screen-label">7. AR Pathology Viewer — Jaw Lesions</div>
+    <div class="tablet">
+      <div class="inner">
+        <div class="ar-screen">
+          <div class="ar-header">
+            <div style="width:30px"></div>
+            <div class="ar-title-block">
+              <div style="font-size:14px">🦷</div>
+              <div style="font-family:'Cinzel',serif;font-size:8px;font-weight:700;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.08em">AR PATHOLOGY VIEWER</div>
+              <div style="font-size:6px;color:#4a6080">Module: Jaw Lesions</div>
+            </div>
+            <div style="width:30px"></div>
+          </div>
+          <div class="ar-body">
+            <div class="ar-viewport">
+              <div class="ar-bg"></div>
+              <!-- 3D Skull Side View -->
+              <svg style="position:absolute;left:50%;top:50%;transform:translate(-52%,-52%)" width="230" height="220" viewBox="0 0 400 360">
+                <defs>
+                  <radialGradient id="skullG" cx="35%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#f5e8c8"/>
+                    <stop offset="35%" stop-color="#d8c090"/>
+                    <stop offset="70%" stop-color="#b89860"/>
+                    <stop offset="100%" stop-color="#806840"/>
+                  </radialGradient>
+                  <radialGradient id="skullSh" cx="35%" cy="30%" r="60%">
+                    <stop offset="0%" stop-color="rgba(210,230,255,0.3)"/>
+                    <stop offset="50%" stop-color="rgba(180,255,210,0.15)"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                  </radialGradient>
+                  <radialGradient id="iridBall" cx="35%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#f0e0f8"/>
+                    <stop offset="25%" stop-color="#c8b0e8"/>
+                    <stop offset="50%" stop-color="#98c8e8"/>
+                    <stop offset="75%" stop-color="#b8e8c8"/>
+                    <stop offset="100%" stop-color="#f0d8b0"/>
+                  </radialGradient>
+                  <filter id="softGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <!-- Skull cranium -->
+                <path d="M100 160 Q80 120 90 80 Q110 30 160 20 Q220 10 265 30 Q310 50 320 90 Q330 130 310 165 Q290 195 255 210 L240 220 L150 220 L130 210 Z" fill="url(#skullG)" stroke="#c9a84c" stroke-width="1.5" stroke-opacity=".6"/>
+                <path d="M100 160 Q80 120 90 80 Q110 30 160 20 Q220 10 265 30 Q310 50 320 90 Q330 130 310 165 Q290 195 255 210 L240 220 L150 220 L130 210 Z" fill="url(#skullSh)"/>
+                <!-- Cheekbone/zygomatic -->
+                <path d="M280 170 Q320 165 340 180 Q355 195 345 215 Q330 228 305 225 Q285 218 275 205 Z" fill="url(#skullG)" stroke="#c9a84c" stroke-width="1.2" stroke-opacity=".5"/>
+                <!-- Eye orbit -->
+                <ellipse cx="210" cy="100" rx="38" ry="28" fill="rgba(8,14,28,.8)" stroke="#c9a84c" stroke-width="1.2" stroke-opacity=".5"/>
+                <!-- Nasal aperture -->
+                <path d="M155 130 Q165 120 175 118 Q185 120 190 130 Q190 145 175 148 Q160 145 155 130Z" fill="rgba(8,14,28,.7)" stroke="#c9a84c" stroke-width="1" stroke-opacity=".4"/>
+                <!-- Maxilla / upper jaw -->
+                <path d="M110 215 Q120 195 150 185 Q175 178 210 178 Q245 178 268 185 Q295 193 305 215 L295 230 Q270 240 210 242 Q150 240 125 230 Z" fill="url(#skullG)" stroke="#c9a84c" stroke-width="1.5" stroke-opacity=".6"/>
+                <!-- Upper teeth -->
+                <rect x="128" y="222" width="16" height="20" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".5"/>
+                <rect x="147" y="222" width="16" height="20" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".5"/>
+                <rect x="166" y="222" width="16" height="20" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".5"/>
+                <rect x="186" y="221" width="20" height="21" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".5"/>
+                <rect x="210" y="221" width="20" height="21" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".5"/>
+                <rect x="234" y="222" width="18" height="20" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".5"/>
+                <rect x="256" y="223" width="16" height="19" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".5"/>
+                <!-- Mandible / lower jaw (offset/open) -->
+                <path d="M115 265 Q108 285 106 315 Q106 340 120 355 Q150 368 210 366 Q270 364 300 355 Q315 340 315 315 Q315 285 308 265 Q288 255 255 252 Q228 250 210 252 Q192 250 165 252 Q135 255 115 265 Z" fill="url(#skullG)" stroke="#c9a84c" stroke-width="1.5" stroke-opacity=".6"/>
+                <!-- Lower teeth -->
+                <rect x="128" y="252" width="15" height="18" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".4"/>
+                <rect x="146" y="252" width="15" height="18" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".4"/>
+                <rect x="164" y="252" width="15" height="18" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".4"/>
+                <rect x="182" y="251" width="18" height="19" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".4"/>
+                <rect x="204" y="251" width="18" height="19" rx="4" fill="#f5eedc" stroke="#c9a84c" stroke-width=".8" stroke-opacity=".4"/>
+                <!-- HIGH RISK LESION — iridescent pearl orb -->
+                <circle cx="260" cy="300" r="30" fill="url(#iridBall)" filter="url(#softGlow)"/>
+                <circle cx="260" cy="300" r="30" fill="none" stroke="rgba(201,168,76,.5)" stroke-width="1.5"/>
+                <ellipse cx="250" cy="288" rx="10" ry="7" fill="rgba(255,255,255,0.25)" transform="rotate(-20 250 288)"/>
+                <!-- Internal cavity lines -->
+                <path d="M245 300 Q252 308 260 306 Q268 304 274 296" stroke="rgba(201,168,76,.5)" stroke-width="1.2" fill="none"/>
+                <!-- Nerve pathways -->
+                <path d="M210 240 Q210 270 210 310 Q210 340 210 358" stroke="rgba(100,160,255,.4)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+                <!-- Gold skull lines -->
+                <path d="M130 155 Q150 145 175 140 Q200 138 220 140" stroke="rgba(201,168,76,.3)" stroke-width="1" fill="none" stroke-dasharray="3 4"/>
+                <!-- ANNOTATION LABELS -->
+                <text x="58" y="168" font-size="9" fill="#e8d5a0" font-weight="bold">Tooth model</text>
+                <line x1="112" y1="168" x2="130" y2="230" stroke="rgba(201,168,76,.5)" stroke-width=".8"/>
+                <text x="58" y="268" font-size="9" fill="#e8d5a0" font-weight="bold">Alveolar Bone</text>
+                <line x1="115" y1="264" x2="130" y2="274" stroke="rgba(201,168,76,.5)" stroke-width=".8"/>
+                <text x="58" y="318" font-size="9" fill="#e8d5a0" font-weight="bold">Lower Mandible</text>
+                <line x1="116" y1="314" x2="128" y2="318" stroke="rgba(201,168,76,.5)" stroke-width=".8"/>
+                <text x="302" y="285" font-size="9" fill="#ffb0a0" font-weight="bold">High-Risk Lesion</text>
+                <line x1="300" y1="290" x2="292" y2="298" stroke="rgba(255,100,80,.5)" stroke-width=".8"/>
+                <text x="302" y="318" font-size="9" fill="#e8d5a0" font-weight="bold">Internal Cavity</text>
+                <line x1="302" y1="313" x2="288" y2="308" stroke="rgba(201,168,76,.5)" stroke-width=".8"/>
+              </svg>
+              <!-- Pip dots -->
+              <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:3px">
+                <div style="width:14px;height:5px;background:rgba(201,168,76,.2);border-radius:3px"></div>
+                <div style="width:14px;height:5px;background:rgba(201,168,76,.2);border-radius:3px"></div>
+                <div style="width:14px;height:5px;background:rgba(201,168,76,.2);border-radius:3px"></div>
+                <div style="width:20px;height:5px;background:#c9a84c;border-radius:3px"></div>
+                <div style="width:14px;height:5px;background:rgba(201,168,76,.2);border-radius:3px"></div>
+                <div style="width:14px;height:5px;background:rgba(201,168,76,.2);border-radius:3px"></div>
+              </div>
+            </div>
+            <!-- AR Insights Panel -->
+            <div class="ar-sidebar">
+              <div class="as-section">AR Insights</div>
+              <div class="as-med-vis">
+                <div style="font-size:6px;font-weight:700;color:#c9a84c;margin-bottom:4px">Medical Visualization</div>
+                <div class="mv-schematic">
+                  <svg width="80" height="40" viewBox="0 0 200 100">
+                    <path d="M20 30 Q50 10 100 8 Q150 10 180 30 Q185 50 175 65 L100 70 L25 65 Q15 50 20 30Z" fill="rgba(201,168,76,.15)" stroke="#c9a84c" stroke-width="1.5" stroke-opacity=".6"/>
+                    <rect x="30" y="58" width="10" height="10" rx="2" fill="#c9a84c" opacity=".4"/>
+                    <rect x="44" y="58" width="10" height="10" rx="2" fill="#c9a84c" opacity=".4"/>
+                    <rect x="58" y="58" width="10" height="10" rx="2" fill="#c9a84c" opacity=".4"/>
+                    <ellipse cx="152" cy="56" rx="12" ry="10" fill="url(#iridBall)" stroke="#c9a84c" stroke-width="1"/>
+                    <text x="135" y="82" font-size="9" fill="#4a6080">Lesion schematic</text>
+                  </svg>
+                  <div class="mv-lbl">HIGH-CLASS PRECISION VISUALIZATION</div>
+                </div>
+              </div>
+              <div class="ar-ctrl-box">
+                <div class="as-section" style="margin-bottom:0">AR Controls</div>
+                <div class="arc-row">
+                  <div class="arc-btn">⚙<br/>SCALE</div>
+                  <div class="arc-btn">🌐<br/>ROTATE</div>
+                  <div class="arc-toggle">ON<br/>ANNOT</div>
+                </div>
+              </div>
+              <div class="ai-diag-box">
+                <div class="as-section" style="margin-bottom:3px">AI Diagnosis Summary</div>
+                <div style="font-size:5px;color:#4a6080;margin-bottom:3px">AI-driven analysis of pathology</div>
+                <div class="ai-diag-item">Ameloblastoma</div>
+                <div class="ai-diag-item">Odontogenic Iter cyst</div>
+                <div class="ai-diag-item">High-Risk Lesion</div>
+              </div>
+              <div class="overlay-box">
+                <div class="as-section" style="margin-bottom:4px">Model Overlay Toggle</div>
+                <div class="ov-row">
+                  <div class="ov-lbl">View Jaw Model</div>
+                  <div class="ov-toggle on"><div class="ov-knob"></div></div>
+                </div>
+                <div class="ov-row" style="margin-bottom:0">
+                  <div class="ov-lbl">View Nerve Pathways</div>
+                  <div class="ov-toggle"><div class="ov-knob"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav" style="font-size:10px">
+            <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+            <div class="nav-item"><div class="ni-icon">📊</div><div class="ni-lbl">Dashboard</div></div>
+            <div class="nav-item"><div class="ni-icon">📖</div><div class="ni-lbl act">Modules</div></div>
+            <div class="nav-item"><div class="ni-icon">📝</div><div class="ni-lbl">Quiz</div></div>
+            <div class="nav-item"><div class="ni-icon">📋</div><div class="ni-lbl">Tests</div></div>
+            <div class="nav-item"><div class="ni-icon">🤖</div><div class="ni-lbl">AI Chatbot</div></div>
+            <div class="nav-item"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /AR row -->
+
+<!-- ════════════════════════════════════════════
+  ROW 4 — AI CHATBOT & QUIZ
+════════════════════════════════════════════ -->
+<div class="section-label">AI Chatbot & Quiz</div>
+<div class="grid">
+
+  <!-- 8. AI Chatbot -->
+  <div class="screen-wrap">
+    <div class="screen-label">8. AI Chatbot</div>
+    <div class="tablet">
+      <div class="inner">
+        <div class="chat-screen">
+          <div class="chat-main">
+            <div class="chat-hdr">
+              <div class="chat-av">🦷</div>
+              <div>
+                <div class="chat-nm">DentAI Assistant</div>
+                <div class="chat-st">Online</div>
+              </div>
+            </div>
+            <!-- User prompt chip -->
+            <div style="padding:5px 8px;background:rgba(201,168,76,.06);border-bottom:1px solid rgba(201,168,76,.08);display:flex;justify-content:flex-end">
+              <div style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:4px 10px;font-size:6.5px;color:#f0d080;font-weight:700">Explain ameloblastoma</div>
+            </div>
+            <div class="chat-msgs">
+              <div class="msg">
+                <div class="msg-av">🦷</div>
+                <div class="bubble bot">
+                  <div class="bubble-ttl">Ameloblastoma</div>
+                  <div style="font-size:6px;color:#9aacbe;margin-bottom:4px"><strong style="color:#c9a84c">Definition:</strong> A benign but locally aggressive odontogenic tumor arising from remnants of dental lamina. Most common in posterior mandible (70–80%).</div>
+                  <div class="bubble-sub">Symptoms:</div>
+                  <div class="bubble-li">Painless jaw swelling</div>
+                  <div class="bubble-li">Odontogenic cyst-like expansion</div>
+                  <div class="bubble-li">Diagnostic diasprosis pattern</div>
+                  <div class="bubble-sub">Diagnosis:</div>
+                  <div style="font-size:5.5px;color:#9aacbe;margin-bottom:4px">Histopathology showing follicular/plexiform pattern with reversed nuclear polarity.</div>
+                  <div class="msg-imgs">
+                    <div class="msg-img">🔬</div>
+                    <div class="msg-img">🩺</div>
+                    <div class="msg-img">🩻</div>
+                    <div class="msg-img">🔬</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-inp">
+              <div class="ci-v">🎙</div>
+              <div style="width:18px;height:18px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px">📎</div>
+              <div class="ci-f">Ask about any oral pathology...</div>
+              <div class="ci-s">➤</div>
+              <div style="font-size:14px">🦷</div>
+            </div>
+            <div class="nav">
+              <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+              <div class="nav-item"><div class="ni-icon">📊</div><div class="ni-lbl">Dashboard</div></div>
+              <div class="nav-item"><div class="ni-icon">📖</div><div class="ni-lbl">Modules</div></div>
+              <div class="nav-item"><div class="ni-icon">📝</div><div class="ni-lbl">Quiz</div></div>
+              <div class="nav-item"><div class="ni-icon">📋</div><div class="ni-lbl">Tests</div></div>
+              <div class="nav-item"><div class="ni-icon">🤖</div><div class="ni-lbl act">AI</div></div>
+            </div>
+          </div>
+          <div class="chat-side">
+            <div class="cs-ttl">Chat Actions</div>
+            <div class="ca-btn"><div class="ca-ic">⚙️</div><div class="ca-lb">Generate Quiz</div></div>
+            <div class="ca-btn"><div class="ca-ic">📄</div><div class="ca-lb">Summarize Topic</div></div>
+            <div class="ca-btn"><div class="ca-ic">🎓</div><div class="ca-lb">Explain in Simple Terms</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Quiz -->
+  <div class="screen-wrap">
+    <div class="screen-label">9. Quiz Interface</div>
+    <div class="tablet">
+      <div class="inner">
+        <div class="quiz-screen">
+          <div class="quiz-hdr">
+            <div class="qh-logo-sm">🦷</div>
+            <div>
+              <div class="qh-ttl">Quiz: Oral Pathology</div>
+            </div>
+            <div class="qh-timer">01:28</div>
+          </div>
+          <div class="progress-track">
+            <div class="pt-pip done">1</div>
+            <div class="pt-pip done">2</div>
+            <div class="pt-pip done">3</div>
+            <div class="pt-pip done">4</div>
+            <div class="pt-pip cur">5</div>
+            <div class="pt-pip">6</div>
+            <div class="pt-pip">7</div>
+            <div class="pt-pip">8</div>
+            <div class="pt-cnt">Question 4/20</div>
+          </div>
+          <div class="quiz-body">
+            <div class="q-main">
+              <div class="q-num-lbl">Question 4 of 20</div>
+              <div class="q-txt">Based on the radiographic features shown below, what is the most likely diagnosis for this odontogenic lesion?</div>
+              <div class="q-imgs">
+                <div class="q-img-box">🔬</div>
+                <div class="q-img-box">🩻</div>
+                <div class="q-img-box">🔬</div>
+                <div class="q-img-box">🩻</div>
+                <div class="q-img-box">🔬</div>
+              </div>
+              <div class="opts-lbl">Options</div>
+              <div class="q-opts">
+                <div class="q-opt sel"><div class="opt-ltr sel">A</div><span>Ameloblastoma ✓</span></div>
+                <div class="q-opt"><div class="opt-ltr">B</div><span>Odontogenic Keratocyst (OKC)</span></div>
+                <div class="q-opt"><div class="opt-ltr">C</div><span>Dentigerous Cyst</span></div>
+                <div class="q-opt"><div class="opt-ltr">D</div><span>Fibrous Dysplasia</span></div>
+              </div>
+            </div>
+            <div class="q-ctrls">
+              <div class="qc-btn"><div class="qc-arr">›</div><div class="qc-lb">Next Question</div></div>
+              <div class="qc-btn"><div class="qc-arr">🔖</div><div class="qc-lb">Bookmark Question</div></div>
+            </div>
+          </div>
+          <div class="nav">
+            <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+            <div class="nav-item"><div class="ni-icon">📊</div><div class="ni-lbl">Dashboard</div></div>
+            <div class="nav-item"><div class="ni-icon">📖</div><div class="ni-lbl">Modules</div></div>
+            <div class="nav-item"><div class="ni-icon">📝</div><div class="ni-lbl act">Quiz</div></div>
+            <div class="nav-item"><div class="ni-icon">📋</div><div class="ni-lbl">Tests</div></div>
+            <div class="nav-item"><div class="ni-icon">🤖</div><div class="ni-lbl">AI</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Quiz Result -->
+  <div class="screen-wrap">
+    <div class="screen-label">10. Quiz Result</div>
+    <div class="tablet">
+      <div class="inner">
+        <div class="result-screen">
+          <div class="res-top">
+            <div style="font-size:14px;margin-bottom:2px">🦷</div>
+            <div class="res-title">QUIZ RESULT</div>
+          </div>
+          <div class="res-body">
+            <div class="res-left">
+              <div class="score-ring-wrap">
+                <div class="score-ring">
+                  <div class="score-inner">
+                    <div class="score-pct">85%</div>
+                    <div class="score-lbl">Score</div>
+                  </div>
+                </div>
+              </div>
+              <div class="perf-badge">🏆 Excellent Performance!</div>
+              <div style="font-size:6px;font-weight:800;color:#c9a84c;margin-bottom:3px;text-transform:uppercase;letter-spacing:.08em">Analysis</div>
+              <div class="an-grid">
+                <div class="an-card">
+                  <div class="an-ttl">Correct Answers</div>
+                  <div class="an-num">17</div>
+                  <div class="an-den">out of 20</div>
+                  <div style="width:28px;height:28px;background:rgba(201,168,76,.1);border-radius:6px;margin-top:4px;display:flex;align-items:center;justify-content:center;font-size:13px">🔬</div>
+                </div>
+                <div class="an-card">
+                  <div class="an-ttl">Weak Topics</div>
+                  <div class="weak-i">⚠️ Ameloblastoma Dx</div>
+                  <div class="weak-i">⚠️ OKC Histopathology</div>
+                  <div class="an-ttl" style="margin-top:4px">Improvement</div>
+                  <div class="sugg-i">→ Review Ameloblastoma</div>
+                  <div class="sugg-i">→ Take Focused Quizzes</div>
+                </div>
+              </div>
+            </div>
+            <div class="res-right">
+              <div class="chart-card">
+                <div class="cc-ttl">A. Topic Performance</div>
+                <div class="bar-row">
+                  <div class="bar-col"><div style="font-size:5px;color:#9aacbe;margin-bottom:2px">90%</div><div class="bar-fill" style="height:38px"></div><div class="bar-nm">Cysts</div></div>
+                  <div class="bar-col"><div style="font-size:5px;color:#9aacbe;margin-bottom:2px">30%</div><div class="bar-fill" style="height:14px;opacity:.6"></div><div class="bar-nm">Tumors</div></div>
+                  <div class="bar-col"><div style="font-size:5px;color:#9aacbe;margin-bottom:2px">75%</div><div class="bar-fill" style="height:30px"></div><div class="bar-nm">Path</div></div>
+                  <div class="bar-col"><div style="font-size:5px;color:#9aacbe;margin-bottom:2px">88%</div><div class="bar-fill" style="height:36px"></div><div class="bar-nm">Lesion</div></div>
+                  <div class="bar-col"><div style="font-size:5px;color:#9aacbe;margin-bottom:2px">90%</div><div class="bar-fill" style="height:38px"></div><div class="bar-nm">Bone</div></div>
+                </div>
+              </div>
+              <div class="hist-card">
+                <div class="cc-ttl">B. Quiz History</div>
+                <svg width="88" height="44" viewBox="0 0 88 44">
+                  <defs>
+                    <linearGradient id="histG" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#c9a84c" stop-opacity=".3"/>
+                      <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M4 34 L22 28 L40 16 L58 20 L76 16" stroke="#c9a84c" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 34 L22 28 L40 16 L58 20 L76 16 L76 44 L4 44Z" fill="url(#histG)"/>
+                  <circle cx="4" cy="34" r="2.5" fill="#c9a84c"/>
+                  <circle cx="22" cy="28" r="2.5" fill="#c9a84c"/>
+                  <circle cx="40" cy="16" r="2.5" fill="#c9a84c"/>
+                  <circle cx="58" cy="20" r="2.5" fill="#c9a84c"/>
+                  <circle cx="76" cy="16" r="2.5" fill="#c9a84c"/>
+                  <text x="0" y="43" font-size="6" fill="#4a6080">78%</text>
+                  <text x="18" y="43" font-size="6" fill="#4a6080">81%</text>
+                  <text x="35" y="43" font-size="6" fill="#4a6080">85%</text>
+                  <text x="53" y="43" font-size="6" fill="#4a6080">83%</text>
+                  <text x="70" y="43" font-size="6" fill="#4a6080">85%</text>
+                </svg>
+                <div style="font-size:5px;color:#4a6080;margin-top:2px;text-align:center">Recent Quizzes</div>
+              </div>
+            </div>
+          </div>
+          <div class="nav">
+            <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+            <div class="nav-item"><div class="ni-icon">📊</div><div class="ni-lbl">Dashboard</div></div>
+            <div class="nav-item"><div class="ni-icon">📖</div><div class="ni-lbl">Modules</div></div>
+            <div class="nav-item"><div class="ni-icon">📝</div><div class="ni-lbl act">Quiz</div></div>
+            <div class="nav-item"><div class="ni-icon">📋</div><div class="ni-lbl">Tests</div></div>
+            <div class="nav-item"><div class="ni-icon">🤖</div><div class="ni-lbl">AI</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /row 4 -->
+
+<!-- ════════════════════════════════════════════
+  ROW 5 — FACULTY & TOOLS
+════════════════════════════════════════════ -->
+<div class="section-label">Faculty Dashboard & Tools</div>
+<div class="grid">
+
+  <!-- 11. Faculty Dashboard (Phone) -->
+  <div class="screen-wrap">
+    <div class="screen-label">11. Faculty Dashboard</div>
+    <div class="phone">
+      <div class="inner">
+        <div class="fac-screen">
+          <div class="fac-hdr">
+            <div class="fh-brand">
+              <span style="font-size:14px">🦷</span> DentAI
+            </div>
+            <div class="arw-av">F</div>
+          </div>
+          <div class="stat-cards">
+            <div class="stat-c">
+              <div class="sc-lbl">Total Students ↑</div>
+              <div class="sc-val">1,250</div>
+              <svg width="50" height="16" viewBox="0 0 50 16"><path d="M0 14 Q10 10 20 8 Q30 6 40 4 Q45 3 50 2" stroke="#c9a84c" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-c">
+              <div class="sc-lbl">Average Score</div>
+              <div class="sc-val">78%</div>
+              <svg width="50" height="16" viewBox="0 0 50 16"><path d="M0 12 Q12 8 22 10 Q30 12 40 6 Q44 4 50 3" stroke="#c9a84c" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-c">
+              <div class="sc-lbl">Active Users ↑</div>
+              <div class="sc-val">915</div>
+              <svg width="50" height="16" viewBox="0 0 50 16"><path d="M0 14 Q8 12 18 10 Q28 8 38 5 Q44 3 50 2" stroke="#c9a84c" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+          <div class="fac-body">
+            <div class="perf-card">
+              <div class="pc-ttl">Student Performance Graphs</div>
+              <div style="font-size:5.5px;color:#4a6080;text-align:center;margin-bottom:4px">Class Performance Trends &nbsp;<span style="color:#c9a84c">■</span> Students</div>
+              <div class="chart-wrap">
+                <div class="cw-col"><div class="cw-bar-group"><div class="cw-bar gold" style="height:20px"></div><div class="cw-bar blue" style="height:14px"></div></div><div class="cw-lbl">1</div></div>
+                <div class="cw-col"><div class="cw-bar-group"><div class="cw-bar gold" style="height:28px"></div><div class="cw-bar blue" style="height:18px"></div></div><div class="cw-lbl">2</div></div>
+                <div class="cw-col"><div class="cw-bar-group"><div class="cw-bar gold" style="height:34px"></div><div class="cw-bar blue" style="height:22px"></div></div><div class="cw-lbl">3</div></div>
+                <div class="cw-col"><div class="cw-bar-group"><div class="cw-bar gold" style="height:30px"></div><div class="cw-bar blue" style="height:20px"></div></div><div class="cw-lbl">4</div></div>
+                <div class="cw-col"><div class="cw-bar-group"><div class="cw-bar gold" style="height:44px"></div><div class="cw-bar blue" style="height:30px"></div></div><div class="cw-lbl">5</div></div>
+                <div class="cw-col"><div class="cw-bar-group"><div class="cw-bar gold" style="height:50px"></div><div class="cw-bar blue" style="height:34px"></div></div><div class="cw-lbl">6</div></div>
+                <div class="cw-col"><div class="cw-bar-group"><div class="cw-bar gold" style="height:54px"></div><div class="cw-bar blue" style="height:38px"></div></div><div class="cw-lbl">7</div></div>
+                <div class="cw-col"><div class="cw-bar-group"><div class="cw-bar gold" style="height:56px"></div><div class="cw-bar blue" style="height:42px"></div></div><div class="cw-lbl">8</div></div>
+              </div>
+            </div>
+            <div class="fac-row">
+              <div class="up-card">
+                <div class="an-ttl">PDF Upload Section</div>
+                <div class="upload-zone">
+                  <div class="uz-ic">📤</div>
+                  <div class="uz-txt">Upload Study Materials</div>
+                  <div class="uz-sub">Click or drag to browse</div>
+                </div>
+                <div style="font-size:5.5px;color:#4a6080;margin-top:3px">Recent Uploads</div>
+                <div style="font-size:5.5px;color:#8aa0b8;display:flex;gap:3px;align-items:center;margin-top:2px">📄 File_Stokes Sl... <span style="margin-left:auto;color:#22c55e">57%</span></div>
+              </div>
+              <div class="up-card">
+                <div class="an-ttl">Quiz Generator</div>
+                <div class="qg-btn">Create new Quiz</div>
+                <div class="qg-ai">⚡ Auto-generate using AI</div>
+                <div class="qg-recent">📝 Recent Quiz<span style="color:#c9a84c;margin-left:auto">57%</span></div>
+              </div>
+            </div>
+            <div class="ai-ins-card">
+              <div class="ai-ins-ic">💡</div>
+              <div>
+                <div style="font-size:6px;font-weight:800;color:#c9a84c;margin-bottom:2px">AI Insights</div>
+                <div class="ai-ins-txt">• Strong understanding in Oral Lesions<br/>• Improvement needed in Tooth Anatomy</div>
+                <div class="ai-ins-btn">Class Weaknesses Review</div>
+              </div>
+            </div>
+          </div>
+          <div class="nav">
+            <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+            <div class="nav-item"><div class="ni-icon">📊</div><div class="ni-lbl act">Dashboard</div></div>
+            <div class="nav-item"><div class="ni-icon">👥</div><div class="ni-lbl">Students</div></div>
+            <div class="nav-item"><div class="ni-icon">📋</div><div class="ni-lbl">Reports</div></div>
+            <div class="nav-item"><div class="ni-icon">⚙️</div><div class="ni-lbl">Settings</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Document Hub -->
+  <div class="screen-wrap">
+    <div class="screen-label">12. Document Hub</div>
+    <div class="tablet">
+      <div class="inner">
+        <div class="doc-screen">
+          <div class="doc-hdr">
+            <div style="font-size:14px;margin-bottom:2px">🦷</div>
+            <div class="dh-ttl">DOCUMENT HUB</div>
+            <div class="dh-st">PDF Upload &amp; AI Processing</div>
+          </div>
+          <div class="doc-body">
+            <div class="doc-left">
+              <div style="font-family:'Cinzel',serif;font-size:7px;font-weight:700;color:#c9a84c;text-align:center;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px">Upload Module</div>
+              <div style="display:flex;justify-content:center;margin-bottom:8px">
+                <div class="upload-circle">
+                  <div class="uc-ring"></div>
+                  <div class="upload-ic">📄</div>
+                  <div class="upload-txt">DRAG &amp; DROP<br/>YOUR PDF HERE</div>
+                  <div style="font-size:5.5px;color:#4a6080;margin-top:2px">MAX FILE SIZE: 25MB</div>
+                  <div style="font-size:5.5px;color:#c9a84c;text-decoration:underline;margin-top:1px;cursor:pointer">BROWSE FILES</div>
+                </div>
+              </div>
+              <div class="upload-btn">START UPLOAD &amp; PROCESS</div>
+            </div>
+            <div class="doc-right">
+              <div class="dp-status">
+                <div class="dp-ttl">AI Processing Status</div>
+                <div class="dp-orb"></div>
+                <div class="dp-ai-lbl">AI ANALYZING...</div>
+                <div class="dp-item">
+                  <div class="dp-item-lbl">🎓 EXTRACT NOTES</div>
+                  <div class="dp-check">✓</div>
+                </div>
+                <div class="dp-item">
+                  <div class="dp-item-lbl">📝 GENERATE MCQs</div>
+                  <div class="dp-check">✓</div>
+                </div>
+                <div class="dp-item">
+                  <div class="dp-item-lbl">📚 GEN. FLASHCARDS</div>
+                  <div class="dp-check">✓</div>
+                </div>
+              </div>
+              <div class="out-preview">
+                <div class="op-ttl">Output Preview</div>
+                <div class="op-row">
+                  <div class="op-item"><div class="op-ic">📄</div><div class="op-lbl">PDF Summary</div></div>
+                  <div class="op-item"><div class="op-ic">📝</div><div class="op-lbl">Quiz Card</div></div>
+                  <div class="op-item"><div class="op-ic">🃏</div><div class="op-lbl">Flashcard Stack</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav">
+            <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+            <div class="nav-item"><div class="ni-icon">📊</div><div class="ni-lbl">Dashboard</div></div>
+            <div class="nav-item"><div class="ni-icon">📖</div><div class="ni-lbl">Modules</div></div>
+            <div class="nav-item"><div class="ni-icon">📝</div><div class="ni-lbl">Quiz</div></div>
+            <div class="nav-item"><div class="ni-icon">📋</div><div class="ni-lbl">Tests</div></div>
+            <div class="nav-item"><div class="ni-icon">🤖</div><div class="ni-lbl">AI Chatbot</div></div>
+            <div class="nav-item"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /row 5 -->
+
+<!-- ════════════════════════════════════════════
+  ROW 6 — STUDY HUB & NOTES
+════════════════════════════════════════════ -->
+<div class="section-label">Study Hub · Notes &amp; Bookmarks</div>
+<div class="grid-2" style="max-width:800px">
+
+  <!-- 13. Study Hub — Notes -->
+  <div class="screen-wrap">
+    <div class="screen-label">13. My Study Hub</div>
+    <div class="tablet">
+      <div class="inner">
+        <div class="notes-screen">
+          <div class="ns-hdr">
+            <div style="font-family:'Cinzel',serif;font-size:7.5px;font-weight:700;background:var(--gold-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:5px;letter-spacing:.1em">MY STUDY HUB</div>
+            <div class="ns-tabs">
+              <div class="ns-tab act">My Notes</div>
+              <div class="ns-tab">My Bookmarks</div>
+            </div>
+          </div>
+          <div class="ns-body">
+            <!-- Col 1: Notes List -->
+            <div class="ns-col">
+              <div class="nsc-ttl">SAVED NOTES <span class="nsc-va">View All</span></div>
+              <div class="note-card">
+                <div class="nc-dt">Nov 15, 2025</div>
+                <div class="nc-ttl">Radicular Cyst — Key Diagnosis</div>
+                <div class="nc-txt">Radicular cyst from Malassez epithelial rests in periapical granuloma...</div>
+                <div class="nc-acts"><span class="nca">✏️ Edit</span><span class="nca">🗑</span></div>
+              </div>
+              <div class="note-card">
+                <div class="nc-dt">Nov 12, 2025</div>
+                <div class="nc-ttl">Ameloblastoma Symptoms</div>
+                <div class="nc-txt">Tumors: ameloblastoma symptoms and diagnostic criteria...</div>
+                <div class="nc-acts"><span class="nca">✏️ Edit</span><span class="nca">🗑</span></div>
+              </div>
+              <div class="note-card">
+                <div class="nc-dt">Nov 10, 2025</div>
+                <div class="nc-ttl">OKC Treatment Path</div>
+                <div class="nc-txt">Navicular jaw anatomy, ameloblastoma & conservative vs aggressive approach...</div>
+                <div class="nc-acts"><span class="nca">✏️ Edit</span><span class="nca">🗑</span></div>
+              </div>
+              <div style="font-size:5.5px;font-weight:800;color:#c9a84c;margin-top:4px;text-transform:uppercase;letter-spacing:.08em">Recently Highlighted</div>
+              <div style="font-size:5.5px;color:#7a8faa;background:rgba(0,0,0,.2);border-radius:5px;padding:4px;display:flex;gap:3px;margin-top:2px"><span style="color:#22c55e;flex-shrink:0">✓</span>Histologically, OKC is lined by parakeratinised epithelium...</div>
+              <div style="font-size:5.5px;color:#7a8faa;background:rgba(0,0,0,.2);border-radius:5px;padding:4px;display:flex;gap:3px;margin-top:2px"><span style="color:#22c55e;flex-shrink:0">✓</span>Ameloblastoma PKC lining is parakeratinized.</div>
+            </div>
+            <!-- Col 2: Note Editor -->
+            <div class="ns-col">
+              <div class="note-editor">
+                <div class="ne-dt">Nov 15, 2025 · 📌 Pinned</div>
+                <div class="ne-ttl">Ameloblastoma — Key Symptoms</div>
+                <div class="ne-body">The distinctive feature of Odontogenic Keratocyst (OKC) is its <span class="highlight">parakeratinised lining</span> and high recurrence due to satellite cysts.<br/><br/>Ameloblastoma's unique features: follicular pattern with <span class="highlight">reversed polarity</span> of peripheral cells. Locally aggressive — requires wide resection.<br/><br/>Key Takeaway: <span class="highlight">PKC lining is parakeratinized.</span></div>
+                <div class="ne-summary">
+                  <div class="nes-ttl">📋 Pathology Summary</div>
+                  <div class="nes-txt">Ameloblastoma — locally aggressive benign odontogenic neoplasm. Follicular or plexiform histology. Wide resection treatment preferred.</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:3px;margin-top:4px">
+                <div style="flex:1;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:4px;text-align:center;font-size:6px;font-weight:700;color:#c9a84c">✏️ Edit</div>
+                <div style="flex:1;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:6px;padding:4px;text-align:center;font-size:6px;font-weight:700;color:#ef6060">🗑 Delete</div>
+              </div>
+            </div>
+            <!-- Col 3: Bookmarks -->
+            <div class="ns-col" style="border-right:none">
+              <div class="nsc-ttl">BOOKMARK CATEGORIES</div>
+              <div class="bm-folder"><div class="bmf-ic">📁</div><div><div class="bmf-nm">Odontogenic Cysts</div><div class="bmf-ct">12 Items</div></div></div>
+              <div class="bm-folder"><div class="bmf-ic">📁</div><div><div class="bmf-nm">Tumors</div><div class="bmf-ct">10 Items</div></div></div>
+              <div class="bm-folder"><div class="bmf-ic">📁</div><div><div class="bmf-nm">Lesions</div><div class="bmf-ct">11 Items</div></div></div>
+              <div class="bm-folder"><div class="bmf-ic">📁</div><div><div class="bmf-nm">Jaw Anatomy</div><div class="bmf-ct">12 Items</div></div></div>
+              <div class="nsc-ttl" style="margin-top:5px">BOOKMARKED MODULES</div>
+              <div class="bm-mod"><div class="bmm-img">🔬</div><div style="flex:1"><div class="bmm-nm">Ameloblastoma Overview</div><div style="font-size:4.5px;color:#4a6080">★★★★☆</div></div><div class="bmm-st">★</div></div>
+              <div class="bm-mod"><div class="bmm-img">🦷</div><div style="flex:1"><div class="bmm-nm">OKC Diagnosis</div><div style="font-size:4.5px;color:#4a6080">★★★★★</div></div><div class="bmm-st">★</div></div>
+              <div class="bm-mod"><div class="bmm-img">🩻</div><div style="flex:1"><div class="bmm-nm">Radicular Cyst Study</div><div style="font-size:4.5px;color:#4a6080">★★★☆☆</div></div><div class="bmm-st">★</div></div>
+              <div class="bm-mod"><div class="bmm-img">⚠️</div><div style="flex:1"><div class="bmm-nm">Odontogenic Overview</div><div style="font-size:4.5px;color:#4a6080">★★★★☆</div></div><div class="bmm-st">★</div></div>
+            </div>
+          </div>
+          <div class="nav">
+            <div class="nav-item"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+            <div class="nav-item"><div class="ni-icon">📖</div><div class="ni-lbl">Modules</div></div>
+            <div class="nav-item"><div class="ni-icon">💬</div><div class="ni-lbl">Chat</div></div>
+            <div class="nav-item"><div class="ni-icon">👤</div><div class="ni-lbl act">Profile</div></div>
+            <div class="nav-item"><div class="ni-icon">⚙️</div><div class="ni-lbl">Settings</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /row 6 -->
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <div class="pf-title">DentAI Learn — Complete UI Design System</div>
+  <div class="pf-sub">13 Premium Screens · Navy &amp; Gold Theme · AR + AI Powered Oral Pathology Platform</div>
+</div>
+
+</body>
+</html>

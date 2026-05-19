@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0f2030"/>
+      <stop offset="100%" stop-color="#0a0f1a"/>
+    </radialGradient>
+    <radialGradient id="devGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#10B981" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="enamel1" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#f5f0e8"/>
+      <stop offset="100%" stop-color="#d4c3a0"/>
+    </radialGradient>
+    <radialGradient id="enamel2" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#e8e0d0"/>
+      <stop offset="100%" stop-color="#c0b090"/>
+    </radialGradient>
+    <linearGradient id="root1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4c3a0"/>
+      <stop offset="100%" stop-color="#a08860"/>
+    </linearGradient>
+    <linearGradient id="dentin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0d890"/>
+      <stop offset="100%" stop-color="#c8a850"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)" rx="16"/>
+  <ellipse cx="100" cy="100" rx="70" ry="70" fill="url(#devGlow)"/>
+
+  <!-- Stage 1: Tooth bud (left) -->
+  <g filter="url(#shadow)" opacity="0.5" transform="translate(-5,10)">
+    <ellipse cx="45" cy="85" rx="14" ry="12" fill="url(#enamel2)"/>
+    <ellipse cx="45" cy="85" rx="8" ry="7" fill="url(#dentin)" opacity="0.6"/>
+    <ellipse cx="43" cy="82" rx="4" ry="3" fill="rgba(255,255,255,0.3)"/>
+  </g>
+
+  <!-- Stage 2: Developing tooth (middle-left) -->
+  <g filter="url(#shadow)" opacity="0.7" transform="translate(0,5)">
+    <path d="M60,65 Q60,50 72,48 Q84,50 84,65 L82,72 Q76,75 72,75 Q68,75 62,72 Z" fill="url(#enamel2)"/>
+    <path d="M66,75 L65,95 Q65,100 70,100 L70,75 Z" fill="url(#root1)" opacity="0.7"/>
+    <path d="M78,75 L79,95 Q79,100 74,100 L74,75 Z" fill="url(#root1)" opacity="0.7"/>
+    <ellipse cx="68" cy="56" rx="5" ry="3" fill="rgba(255,255,255,0.25)"/>
+  </g>
+
+  <!-- Stage 3: Mature tooth (center-right) - with fusion anomaly -->
+  <g filter="url(#shadow)">
+    <!-- Normal crown -->
+    <path d="M95,55 Q95,30 112,26 Q129,30 129,55 L126,65 Q118,70 112,70 Q106,70 98,65 Z" fill="url(#enamel1)"/>
+    <!-- Fused second crown -->
+    <path d="M125,58 Q125,38 138,35 Q148,38 148,55 L146,62 Q140,66 136,66 Q132,66 128,63 Z" fill="url(#enamel1)" opacity="0.85"/>
+    <!-- Fusion line -->
+    <path d="M127,38 L127,66" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
+    <!-- Highlights -->
+    <path d="M100,42 Q100,36 110,34 Q114,36 114,42 Q114,47 108,48 Q100,47 100,42 Z" fill="rgba(255,255,255,0.3)"/>
+    <!-- Neck -->
+    <rect x="100" y="65" width="26" height="10" rx="3" fill="#c9b89a"/>
+    <rect x="130" y="62" width="16" height="8" rx="3" fill="#c9b89a" opacity="0.85"/>
+    <!-- Roots (shared) -->
+    <path d="M104,75 L102,125 Q102,135 108,135 L108,75 Z" fill="url(#root1)"/>
+    <path d="M118,75 L122,125 Q122,135 116,135 L116,75 Z" fill="url(#root1)"/>
+    <!-- Dilacerated root -->
+    <path d="M138,70 L140,100 Q142,115 148,122 Q152,128 148,132" fill="none" stroke="url(#root1)" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Development arrows -->
+  <g filter="url(#glow)">
+    <path d="M55,90 L62,82" stroke="#10B981" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+    <path d="M82,80 L92,65" stroke="#10B981" stroke-width="1.5" fill="none"/>
+    <!-- Arrow heads -->
+    <polygon points="62,82 58,86 64,85" fill="#10B981"/>
+    <polygon points="92,65 88,70 94,69" fill="#10B981"/>
+  </g>
+
+  <!-- Enamel defect markers -->
+  <g opacity="0.6">
+    <circle cx="105" cy="45" r="3" fill="none" stroke="#10B981" stroke-width="1"/>
+    <circle cx="135" cy="48" r="3" fill="none" stroke="#10B981" stroke-width="1"/>
+  </g>
+
+  <text x="100" y="188" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#10B981" opacity="0.9">DEVELOPMENT</text>
+</svg>

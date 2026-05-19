@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1520"/>
+      <stop offset="100%" stop-color="#0a0f1a"/>
+    </radialGradient>
+    <radialGradient id="boneGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#EF4444" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="jawBone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0e0c0"/>
+      <stop offset="40%" stop-color="#d4c0a0"/>
+      <stop offset="100%" stop-color="#b8a078"/>
+    </linearGradient>
+    <radialGradient id="enamelB" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#f5f0e8"/>
+      <stop offset="100%" stop-color="#d8ccb0"/>
+    </radialGradient>
+    <radialGradient id="dysplasia" cx="40%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#fca5a5"/>
+      <stop offset="50%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#991b1b"/>
+    </radialGradient>
+    <linearGradient id="rootB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4c3a0"/>
+      <stop offset="100%" stop-color="#a08860"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <pattern id="groundGlass" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.8" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="5" cy="5" r="0.6" fill="rgba(255,255,255,0.1)"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)" rx="16"/>
+  <ellipse cx="100" cy="105" rx="70" ry="65" fill="url(#boneGlow)"/>
+
+  <!-- Jawbone (mandible cross-section) -->
+  <g filter="url(#shadow)">
+    <!-- Mandible body -->
+    <path d="M25,120 Q25,95 40,85 L45,70 Q55,55 75,50 L85,48 Q100,46 115,48 L125,50 Q145,55 155,70 L160,85 Q175,95 175,120 L170,145 Q160,165 140,170 L60,170 Q40,165 30,145 Z" fill="url(#jawBone)"/>
+    <!-- Cortical bone outline -->
+    <path d="M25,120 Q25,95 40,85 L45,70 Q55,55 75,50 L85,48 Q100,46 115,48 L125,50 Q145,55 155,70 L160,85 Q175,95 175,120 L170,145 Q160,165 140,170 L60,170 Q40,165 30,145 Z" fill="none" stroke="#c8b090" stroke-width="2"/>
+    <!-- Bone highlight -->
+    <path d="M45,80 Q60,60 100,55 Q140,60 155,80" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3"/>
+
+    <!-- Teeth in bone -->
+    <g>
+      <!-- Tooth 1 -->
+      <path d="M55,55 Q55,38 65,35 Q75,38 75,55" fill="url(#enamelB)"/>
+      <rect x="58" y="55" width="14" height="28" rx="2" fill="url(#rootB)"/>
+      <!-- Tooth 2 -->
+      <path d="M82,50 Q82,33 92,30 Q102,33 102,50" fill="url(#enamelB)"/>
+      <rect x="85" y="50" width="14" height="32" rx="2" fill="url(#rootB)"/>
+      <!-- Tooth 3 -->
+      <path d="M110,50 Q110,33 120,30 Q130,33 130,50" fill="url(#enamelB)"/>
+      <rect x="113" y="50" width="14" height="30" rx="2" fill="url(#rootB)"/>
+      <!-- Tooth 4 -->
+      <path d="M137,55 Q137,40 145,37 Q153,40 153,55" fill="url(#enamelB)"/>
+      <rect x="140" y="55" width="10" height="25" rx="2" fill="url(#rootB)"/>
+    </g>
+
+    <!-- Fibrous dysplasia region (ground-glass appearance) -->
+    <g filter="url(#glow)">
+      <ellipse cx="120" cy="120" rx="35" ry="28" fill="url(#dysplasia)" opacity="0.45"/>
+      <ellipse cx="120" cy="120" rx="35" ry="28" fill="url(#groundGlass)"/>
+      <!-- Woven bone trabeculae (Chinese letter pattern) -->
+      <path d="M100,110 L108,118 L102,125 L110,130" fill="none" stroke="rgba(255,200,200,0.4)" stroke-width="1.2"/>
+      <path d="M115,105 L120,115 L112,120 L118,128" fill="none" stroke="rgba(255,200,200,0.4)" stroke-width="1.2"/>
+      <path d="M130,108 L135,118 L128,122 L133,132" fill="none" stroke="rgba(255,200,200,0.4)" stroke-width="1.2"/>
+      <path d="M140,112 L145,120 L138,125" fill="none" stroke="rgba(255,200,200,0.3)" stroke-width="1"/>
+    </g>
+    <!-- Expansion indicator -->
+    <path d="M150,105 Q165,120 152,140" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+  </g>
+
+  <text x="100" y="190" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#EF4444" opacity="0.9">BONE PATHOLOGY</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a2840"/>
+      <stop offset="100%" stop-color="#0a0f1a"/>
+    </radialGradient>
+    <radialGradient id="enamel" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#f5f0e8"/>
+      <stop offset="60%" stop-color="#e8dcc8"/>
+      <stop offset="100%" stop-color="#d4c3a0"/>
+    </radialGradient>
+    <radialGradient id="cystGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#c9a84c" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="root" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4c3a0"/>
+      <stop offset="100%" stop-color="#a08860"/>
+    </linearGradient>
+    <radialGradient id="cyst" cx="45%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#5b8abf"/>
+      <stop offset="50%" stop-color="#3a6a9f"/>
+      <stop offset="100%" stop-color="#1e4a7a"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="200" height="200" fill="url(#bg)" rx="16"/>
+  <!-- Ambient glow -->
+  <ellipse cx="100" cy="100" rx="70" ry="70" fill="url(#cystGlow)"/>
+  <!-- Tooth crown -->
+  <g filter="url(#shadow)">
+    <!-- Crown -->
+    <path d="M72,75 Q72,42 100,38 Q128,42 128,75 L124,85 Q112,90 100,90 Q88,90 76,85 Z" fill="url(#enamel)"/>
+    <!-- Crown highlight -->
+    <path d="M80,55 Q80,48 100,45 Q110,47 112,55 Q112,62 100,64 Q88,62 80,55 Z" fill="rgba(255,255,255,0.3)"/>
+    <!-- Cusps -->
+    <ellipse cx="86" cy="42" rx="8" ry="5" fill="url(#enamel)"/>
+    <ellipse cx="100" cy="39" rx="7" ry="4" fill="url(#enamel)"/>
+    <ellipse cx="114" cy="42" rx="8" ry="5" fill="url(#enamel)"/>
+    <!-- Neck -->
+    <rect x="82" y="85" width="36" height="12" rx="4" fill="#c9b89a"/>
+    <!-- Root -->
+    <path d="M85,97 L82,145 Q82,155 90,155 L90,97 Z" fill="url(#root)"/>
+    <path d="M110,97 L118,145 Q118,155 110,155 L110,97 Z" fill="url(#root)"/>
+  </g>
+  <!-- Cyst sac around root -->
+  <ellipse cx="90" cy="148" rx="22" ry="18" fill="url(#cyst)" opacity="0.7" filter="url(#glow)"/>
+  <ellipse cx="90" cy="148" rx="18" ry="14" fill="none" stroke="#5b8abf" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <!-- Cyst fluid highlight -->
+  <ellipse cx="85" cy="144" rx="8" ry="5" fill="rgba(120,180,230,0.3)"/>
+  <!-- Label -->
+  <text x="100" y="188" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#c9a84c" opacity="0.9">CYST</text>
+</svg>
